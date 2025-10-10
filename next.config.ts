@@ -28,8 +28,17 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'i.imgur.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
+  env: {
+    GEMINI_API_KEY: process.env.GEMINI_API_KEY,
+  }
 };
 
 export default nextConfig;

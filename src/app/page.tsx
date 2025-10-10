@@ -1,3 +1,9 @@
+import ModeloMatch from "@/components/modelo-match";
+
 export default function Home() {
-  return <></>;
+  return (
+    <div className="bg-background">
+      <ModeloMatch />
+    </div>
+  );
 }
