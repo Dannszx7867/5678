@@ -286,7 +286,7 @@ export default function ChatSimulationSection({ model, onContinue }: ChatSimulat
           <div className="border-t border-gray-200 bg-white p-3">
             {isChatFinished ? (
               <Button onClick={onContinue} size="lg" className="w-full rounded-full bg-primary text-lg font-bold text-primary-foreground hover:bg-primary/90 px-10 py-7 shadow-lg shadow-primary/30 active:scale-95">
-                Validar Acceso y Continuar
+                Validar y Continuar
               </Button>
             ) : (
               <div className="flex items-center gap-3">

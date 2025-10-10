@@ -16,17 +16,14 @@ export default function PricingSection({ onContinue }: PricingSectionProps) {
               Oferta Exclusiva y Limitada
             </h3>
             <CardTitle className="font-headline text-3xl sm:text-4xl mt-2 text-foreground">
-              Adquiere a tus modelos favoritas con un <span className="text-primary [text-shadow:0_0_8px_hsl(var(--primary)/0.7)]">plan único</span>, <span className="text-primary [text-shadow:0_0_8px_hsl(var(--primary)/0.7)]">vitalicio</span> y pagando solo la <span className="text-primary [text-shadow:0_0_8px_hsl(var(--primary)/0.7)]">tarifa</span>
+              Continúa el <span className="text-primary [text-shadow:0_0_8px_hsl(var(--primary)/0.7)]">chat</span> con tu modelo <span className="text-primary [text-shadow:0_0_8px_hsl(var(--primary)/0.7)]">favorita</span> pagando solo la <span className="text-primary [text-shadow:0_0_8px_hsl(var(--primary)/0.7)]">tarifa</span>
             </CardTitle>
           </CardHeader>
           <CardContent className="p-6 sm:p-8 text-center">
             <div className="mb-8">
-              <span className="font-headline text-5xl sm:text-6xl font-bold text-primary">$5,90</span>
-              <span className="ml-2 text-2xl font-medium text-muted-foreground line-through">$15</span>
-              <p className="text-sm text-muted-foreground mt-1">Precio en dólar (USD). Al pagar, la plataforma convierte automaticamente a tu moeda local</p>
-              <p className="mt-4 text-sm font-semibold text-primary/90 bg-primary/10 p-2 rounded-md">
-                Tu contribución ayuda a mantener la plataforma y a recompensar a las creadoras de contenido por su trabajo.
-              </p>
+              <span className="font-headline text-5xl sm:text-6xl font-bold text-primary">€9,00</span>
+              <span className="ml-2 text-2xl font-medium text-muted-foreground line-through">€27,90</span>
+              <p className="text-sm text-muted-foreground mt-1">Precio en euro (EUR). Al pagar, la plataforma convierte automáticamente a tu moneda local.</p>
             </div>
 
             <div className="text-left space-y-4 my-8">
@@ -35,7 +32,7 @@ export default function PricingSection({ onContinue }: PricingSectionProps) {
                   <Check className="h-4 w-4 text-primary-foreground" />
                 </div>
                 <p className="text-foreground">
-                  <span className="font-bold">Acceso VIP a TODO el contenido</span> de las modelos que más te gustaron (¡y de todas las demás también!).
+                  <span className="font-bold">Acceso Exclusivo a TODO el contenido</span> de las modelos que más te gustaron (¡y de todas las demás también!).
                 </p>
               </div>
               <div className="flex items-start gap-3">
@@ -43,7 +40,7 @@ export default function PricingSection({ onContinue }: PricingSectionProps) {
                   <Star className="h-4 w-4 text-primary-foreground" />
                 </div>
                 <p className="text-foreground">
-                  Participa en un <span className="font-bold">sorteo exclusivo para una visita a domicilio</span> con una de las modelos del Top 3. ¡Una experiencia inolvidable!
+                  Participa en un <span className="font-bold">sorteo exclusivo para un viaje en yate con varias modelos de OnlyFans</span>. ¡Una experiencia inolvidable!
                 </p>
               </div>
                <div className="flex items-start gap-3">
@@ -61,7 +58,7 @@ export default function PricingSection({ onContinue }: PricingSectionProps) {
               size="lg"
               className="w-full rounded-full bg-primary text-lg font-bold text-primary-foreground hover:bg-primary/90 px-10 py-8 shadow-lg shadow-primary/30 active:scale-95"
             >
-              QUIERO MI ACCESO VIP AHORA
+              DESBLOQUEAR TODO AHORA
             </Button>
              <p className="mt-4 text-xs text-muted-foreground">
               Esta oferta puede terminar en cualquier momento sin previo aviso.

@@ -65,21 +65,9 @@ export default function EvaluationSection({ model, onRate, onFinish, current, to
                 </div>
               </CardHeader>
               <CardContent className="p-6 text-center">
-                <CardTitle className="font-headline text-2xl flex items-center justify-center gap-2">
-                  {model.name}
-                  {model.flagUrl && (
-                    <Image
-                      src={model.flagUrl}
-                      alt={`Bandera ${model.nationality}`}
-                      width={24}
-                      height={24}
-                      className="rounded-full object-cover w-6 h-6"
-                    />
-                  )}
-                </CardTitle>
-                {model.persona && <p className="text-muted-foreground text-sm font-semibold mt-1">{model.persona}</p>}
-                <CardDescription className="mt-1">{model.description}</CardDescription>
-                <p className="mt-6 font-semibold text-lg text-foreground">¿Qué te pareció esta modelo?</p>
+                 <div className="flex justify-center mb-2">
+                    <ArrowDown className="h-8 w-8 text-primary animate-bounce" />
+                </div>
               </CardContent>
               <CardFooter className="grid grid-cols-2 gap-4 p-6 pt-0">
                 <Button

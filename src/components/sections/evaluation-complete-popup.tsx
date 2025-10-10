@@ -17,7 +17,7 @@ export default function EvaluationCompletePopup({ isOpen, onAction }: Evaluation
             🎊 ¡Felicidades!
           </DialogTitle>
           <DialogDescription className="text-foreground/90 text-base sm:text-lg mt-4">
-            Has evaluado a TODAS. Y como recompensa… tu pase VIP está liberado para hablar directamente con las TOP 3 modelos más deseadas de OnlyFans. 💬🔥
+            Has evaluado a TODAS las modelos. Y como recompensa… tu pase VIP está liberado para hablar directamente con la modelo que tú quieras. 💬🔥
           </DialogDescription>
         </DialogHeader>
         <div className="p-6 pt-4 flex flex-col items-center">
