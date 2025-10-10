@@ -40,12 +40,13 @@ export default function EvaluationSection({ model, onRate, onFinish, current, to
                 <div className="aspect-[4/5] relative bg-black">
                   {model.videoUrl ? (
                     <video 
+                      key={model.videoUrl}
                       src={model.videoUrl} 
                       autoPlay 
                       muted 
                       loop 
-                      playsInline 
-                      controls 
+                      playsInline
+                      preload="auto"
                       className="w-full h-full object-cover" 
                     />
                   ) : (
