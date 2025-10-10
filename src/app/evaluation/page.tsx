@@ -116,12 +116,9 @@ function EvaluationContent() {
       : 'https://pay.mundpay.com/01997438-0b55-73ae-802a-7932995370eb';
   }
 
-  const top3Models = useMemo(() => {
-    const likedRatings = ratings.filter(r => r.rating);
-    const likedModels = likedRatings.map(r => models.find(m => m.id === r.modelId)).filter(Boolean) as Model[];
-    // @ts-ignore
-    return likedModels.sort((a, b) => b.attributes.beleza - a.attributes.beleza).slice(0, 3);
-  }, [ratings]);
+  const allModels = useMemo(() => {
+    return models;
+  }, []);
 
   const modelsToPreload = useMemo(() => {
     return models.slice(currentModelIndex + 1, currentModelIndex + 3);
@@ -165,7 +162,7 @@ function EvaluationContent() {
         
         {step === 'top3' && (
           <div ref={top3Ref} className="scroll-mt-16">
-            <Top3Section models={top3Models} onContact={showChat} onContinue={showPricing} />
+            <Top3Section models={allModels} onContact={showChat} onContinue={showPricing} />
           </div>
         )}
 

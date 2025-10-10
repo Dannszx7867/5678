@@ -7,12 +7,6 @@
       "imageHint": "woman portrait"
     },
     {
-      "id": "model-2",
-      "description": "Portrait of a woman named maria.gomez",
-      "imageUrl": "https://i.imgur.com/PNNzYjQ.jpeg",
-      "imageHint": "woman beach"
-    },
-    {
       "id": "model-3",
       "description": "Portrait of a woman named ester.muniz",
       "imageUrl": "https://i.imgur.com/NGCx6Xu.jpeg",
@@ -25,10 +19,10 @@
       "imageHint": "woman smiling"
     },
     {
-      "id": "model-5",
-      "description": "Portrait of a woman named sophie.rain",
-      "imageUrl": "https://i.imgur.com/9LIE3mS.jpeg",
-      "imageHint": "woman fitness"
+      "id": "model-10",
+      "description": "Portrait of a woman named annie.lust",
+      "imageUrl": "https://i.imgur.com/4q2QcdO.jpg",
+      "imageHint": "woman posing"
     },
     {
       "id": "model-6",
@@ -41,18 +35,6 @@
       "description": "Portrait of Kerolay.Chaves",
       "imageUrl": "https://i.imgur.com/dKv68KE.jpeg",
       "imageHint": "woman candid"
-    },
-    {
-      "id": "model-8",
-      "description": "Portrait of yasmim.cat",
-      "imageUrl": "https://i.imgur.com/Cig4i9k.jpeg",
-      "imageHint": "woman nature"
-    },
-    {
-      "id": "model-9",
-      "description": "Portrait of eun.chae",
-      "imageUrl": "https://i.imgur.com/w15eqMd.jpeg",
-      "imageHint": "woman casual"
     }
   ]
 }
