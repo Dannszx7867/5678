@@ -37,7 +37,7 @@ export default function EvaluationSection({ model, onRate, onFinish, current, to
           <div className="animate-fade-in px-4 sm:px-0 max-w-sm mx-auto">
             <Card className="mx-auto w-full overflow-hidden rounded-2xl shadow-2xl">
               <CardHeader className="p-0">
-                <div className="aspect-[4/5] relative bg-black">
+                <div className="aspect-square md:aspect-[4/5] relative bg-black max-w-full" style={{ maxHeight: 'calc(100vh - 250px)', maxWidth: '100vw' }}>
                   {model.videoUrl ? (
                     <video 
                       key={model.videoUrl}
