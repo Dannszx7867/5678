@@ -11,7 +11,7 @@ import Script from 'next/script';
 type Message = {
   id: number;
   sender: 'user' | 'model';
-  type: 'text' | 'audio' | 'image' | 'options' | 'button';
+  type: 'text' | 'audio' | 'image' | 'options' | 'button' | 'video';
   content: string;
   time: string;
   options?: { text: string; action: () => void }[];
@@ -111,9 +111,9 @@ export default function ChatSimulationSection({ model, onContinue }: ChatSimulat
         }, 4500);
         break;
         
-      case 5: // Blurred Image
+      case 5: // Blurred Image -> Video
         setTimeout(() => {
-            addMessage({ sender: 'model', type: 'image', content: model.evaluationImageUrl ?? model.imageUrl });
+            addMessage({ sender: 'model', type: 'video', content: '/video_07.mp4' });
             setIsTyping(false);
             setTimeout(() => runChatFlow(6), 1500);
         }, 2000);
@@ -240,13 +240,14 @@ export default function ChatSimulationSection({ model, onContinue }: ChatSimulat
                         <div className={cn('max-w-[75%] rounded-2xl px-4 py-3', 
                             msg.sender === 'user' ? 'bg-primary text-primary-foreground rounded-br-none' : 'bg-primary text-primary-foreground rounded-bl-none',
                             (msg.type === 'options' || msg.type === 'button') && 'bg-transparent p-0',
-                             msg.type === 'audio' && 'bg-transparent p-0'
+                             msg.type === 'audio' && 'bg-transparent p-0',
+                             msg.type === 'video' && 'bg-transparent p-0'
                         )}>
                             {msg.type === 'text' && <p className="text-base">{msg.content}</p>}
                             {msg.type === 'audio' && <WistiaAudioPlayer mediaId={audioMap[msg.content]} />}
-                            {msg.type === 'image' && (
+                            {msg.type === 'video' && (
                                 <div className="relative aspect-square w-48 h-48 rounded-lg overflow-hidden">
-                                    <Image src="https://i.imgur.com/2aVkcxw.png" alt="Model image" layout="fill" className="object-cover" />
+                                    <video src={msg.content} autoPlay muted loop playsInline className="w-full h-full object-cover" />
                                 </div>
                             )}
                             {msg.type === 'button' && msg.onButtonClick && (
@@ -259,7 +260,7 @@ export default function ChatSimulationSection({ model, onContinue }: ChatSimulat
                                     ))}
                                 </div>
                             )}
-                            <div className={cn("mt-1 text-right text-xs text-gray-400", (msg.type === 'options' || msg.type === 'button' || msg.type === 'image' || msg.type === 'audio') && 'hidden' )}>{msg.time}</div>
+                            <div className={cn("mt-1 text-right text-xs text-gray-400", (msg.type === 'options' || msg.type === 'button' || msg.type === 'image' || msg.type === 'audio' || msg.type === 'video') && 'hidden' )}>{msg.time}</div>
                         </div>
                     </div>
                 </div>
