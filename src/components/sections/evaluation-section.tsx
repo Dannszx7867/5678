@@ -39,16 +39,15 @@ export default function EvaluationSection({ model, onRate, onFinish, current, to
               <CardHeader className="p-0">
                 <div className="aspect-[4/5] relative bg-black">
                   {model.videoUrl ? (
-                     <div style={{position: 'relative', width: '100%', paddingTop: '125%', overflow: 'hidden'}}>
-                        <iframe 
-                            src={model.videoUrl}
-                            allow="autoplay"
-                            allowFullScreen
-                            frameBorder="0"
-                            style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 0, pointerEvents: 'none'}}
-                            >
-                        </iframe>
-                    </div>
+                    <video 
+                      src={model.videoUrl} 
+                      autoPlay 
+                      muted 
+                      loop 
+                      playsInline 
+                      controls 
+                      className="w-full h-full object-cover" 
+                    />
                   ) : (
                     <Image
                       src={model.evaluationImageUrl ?? model.imageUrl}

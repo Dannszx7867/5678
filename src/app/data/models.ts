@@ -31,7 +31,7 @@ const flagUrls: { [key: string]: string } = {
 };
 
 const modelData = [
-  { id: '1', name: 'vale.castaneda', persona: 'musa', description: 'Imagínala solo para ti...', imageId: 'model-1', evaluationImageUrl: 'https://i.imgur.com/W8I9S3p.png', nationality: '🇨🇴', photos: 195, videos: 50, followers: '15.2K', attributes: { beleza: 96, estilo: 93, interacao: 97 } },
+  { id: '1', name: 'vale.castaneda', persona: 'musa', description: 'Imagínala solo para ti...', imageId: 'model-1', videoUrl: '/video_01.mp4', evaluationImageUrl: 'https://i.imgur.com/W8I9S3p.png', nationality: '🇨🇴', photos: 195, videos: 50, followers: '15.2K', attributes: { beleza: 96, estilo: 93, interacao: 97 } },
   { id: '3', name: 'ester.muniz', persona: 'carioca', description: '¿Podrías con esta delicia?', imageId: 'model-3', evaluationImageUrl: 'https://i.imgur.com/mZSnpaP.png', nationality: '🇧🇷', photos: 155, videos: 30, followers: '18.3K', attributes: { beleza: 93, estilo: 97, interacao: 90 } },
   { id: '4', name: 'Karol.Rosado', persona: 'influencer', description: '¿Qué te parece esta belleza?', imageId: 'model-4', evaluationImageUrl: 'https://i.imgur.com/10xEca4.png', nationality: '🇨🇴', photos: 210, videos: 55, followers: '19.8K', attributes: { beleza: 94, estilo: 91, interacao: 96 } },
   { id: '10', name: 'annie.lust', persona: 'traviesa', description: '¿Te atreves a conocerla?', imageId: 'model-10', evaluationImageUrl: 'https://i.imgur.com/4q2QcdO.jpg', nationality: '🇪🇸', photos: 310, videos: 80, followers: '30.1K', attributes: { beleza: 95, estilo: 92, interacao: 98 } },
