@@ -1,4 +1,3 @@
-// personalized-beauty-score.ts
 'use server';
 
 /**
@@ -20,14 +19,12 @@ const PersonalizedBeautyScoreInputSchema = z.object({
 export type PersonalizedBeautyScoreInput = z.infer<typeof PersonalizedBeautyScoreInputSchema>;
 
 const PersonalizedBeautyScoreOutputSchema = z.object({
-  beautyScore:
-    z
-      .number()
-      .describe('A personalized beauty score calculated based on the user provided ratings.'),
-  suggestedContent:
-    z
-      .string()
-      .describe('A personalized message enticing the user to unlock model content based on the beauty score.'),
+  beautyScore: z
+    .number()
+    .describe('A personalized beauty score calculated based on the user provided ratings.'),
+  suggestedContent: z
+    .string()
+    .describe('A personalized message enticing the user to unlock model content based on the beauty score.'),
 });
 export type PersonalizedBeautyScoreOutput = z.infer<typeof PersonalizedBeautyScoreOutputSchema>;
 
@@ -61,29 +58,9 @@ Here are the user's ratings:
 Here's an example output in Spanish:
 {
   "beautyScore": 85,
-  "suggestedContent": "¡Felicitaciones! Tu Puntuación de Belleza es 85. ¡Desbloquea contenido exclusivo de las modelos que te encantaron y obtén acceso directo a su WhatsApp! Plazas limitadas."
+  "suggestedContent": "¡Felicitaciones! Tu Puntuación de Belleza es 85. ¡Desbloquea contenido exclusivo de las modelos que te encantaron y obtén acceso directo a su WhatsApp! Plazas limitadas.",
 }
 `,
-  config: {
-    safetySettings: [
-      {
-        category: 'HARM_CATEGORY_HATE_SPEECH',
-        threshold: 'BLOCK_ONLY_HIGH',
-      },
-      {
-        category: 'HARM_CATEGORY_DANGEROUS_CONTENT',
-        threshold: 'BLOCK_NONE',
-      },
-      {
-        category: 'HARM_CATEGORY_HARASSMENT',
-        threshold: 'BLOCK_MEDIUM_AND_ABOVE',
-      },
-      {
-        category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT',
-        threshold: 'BLOCK_LOW_AND_ABOVE',
-      },
-    ],
-  },
 });
 
 const personalizedBeautyScoreFlow = ai.defineFlow(

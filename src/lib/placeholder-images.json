@@ -2,63 +2,57 @@
   "placeholderImages": [
     {
       "id": "model-1",
-      "description": "Image of model 1",
-      "imageUrl": "https://picsum.photos/seed/1/600/800",
+      "description": "Portrait of a woman named vale.castaneda",
+      "imageUrl": "https://i.imgur.com/on4vDbf.jpeg",
       "imageHint": "woman portrait"
     },
     {
       "id": "model-2",
-      "description": "Image of model 2",
-      "imageUrl": "https://picsum.photos/seed/2/600/800",
-      "imageHint": "fashion model"
-    },
-    {
-      "id": "model-3",
-      "description": "Image of model 3",
-      "imageUrl": "https://picsum.photos/seed/3/600/800",
-      "imageHint": "woman smiling"
-    },
-    {
-      "id": "model-4",
-      "description": "Image of model 4",
-      "imageUrl": "https://picsum.photos/seed/4/600/800",
+      "description": "Portrait of a woman named maria.gomez",
+      "imageUrl": "https://i.imgur.com/PNNzYjQ.jpeg",
       "imageHint": "woman beach"
     },
     {
+      "id": "model-3",
+      "description": "Portrait of a woman named ester.muniz",
+      "imageUrl": "https://i.imgur.com/NGCx6Xu.jpeg",
+      "imageHint": "woman city"
+    },
+    {
+      "id": "model-4",
+      "description": "Portrait of a woman named Karol.Rosado",
+      "imageUrl": "https://i.imgur.com/1VJ5CSr.jpeg",
+      "imageHint": "woman smiling"
+    },
+    {
       "id": "model-5",
-      "description": "Image of model 5",
-      "imageUrl": "https://picsum.photos/seed/5/600/800",
-      "imageHint": "portrait style"
+      "description": "Portrait of a woman named sophie.rain",
+      "imageUrl": "https://i.imgur.com/9LIE3mS.jpeg",
+      "imageHint": "woman fitness"
     },
     {
       "id": "model-6",
-      "description": "Image of model 6",
-      "imageUrl": "https://picsum.photos/seed/6/600/800",
-      "imageHint": "woman street"
+      "description": "Portrait of a woman named kimber.sanchez",
+      "imageUrl": "https://i.imgur.com/KIWxsPr.jpeg",
+      "imageHint": "woman fashion"
     },
     {
       "id": "model-7",
-      "description": "Image of model 7",
-      "imageUrl": "https://picsum.photos/seed/7/600/800",
-      "imageHint": "beauty face"
+      "description": "Portrait of Kerolay.Chaves",
+      "imageUrl": "https://i.imgur.com/dKv68KE.jpeg",
+      "imageHint": "woman candid"
     },
     {
       "id": "model-8",
-      "description": "Image of model 8",
-      "imageUrl": "https://picsum.photos/seed/8/600/800",
-      "imageHint": "model pose"
+      "description": "Portrait of yasmim.cat",
+      "imageUrl": "https://i.imgur.com/Cig4i9k.jpeg",
+      "imageHint": "woman nature"
     },
     {
       "id": "model-9",
-      "description": "Image of model 9",
-      "imageUrl": "https://picsum.photos/seed/9/600/800",
-      "imageHint": "woman summer"
-    },
-    {
-      "id": "model-10",
-      "description": "Image of model 10",
-      "imageUrl": "https://picsum.photos/seed/10/600/800",
-      "imageHint": "elegant woman"
+      "description": "Portrait of eun.chae",
+      "imageUrl": "https://i.imgur.com/w15eqMd.jpeg",
+      "imageHint": "woman casual"
     }
   ]
 }

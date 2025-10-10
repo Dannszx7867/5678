@@ -1,0 +1,105 @@
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { ThumbsDown, Heart, ArrowDown } from "lucide-react";
+import type { Model } from "@/app/data/models";
+import { Progress } from "@/components/ui/progress";
+
+type EvaluationSectionProps = {
+  model: Model | null;
+  onRate: (modelId: string, modelName: string, rating: boolean) => void;
+  onFinish: () => void;
+  current: number;
+  total: number;
+  isFirst: boolean;
+};
+
+export default function EvaluationSection({ model, onRate, onFinish, current, total, isFirst }: EvaluationSectionProps) {
+  const progress = (current / total) * 100;
+  const isEvaluationFinished = current >= total;
+  
+  const handleRate = (rating: boolean) => {
+    if (!model) return;
+    onRate(model.id, model.name, rating);
+    if(isEvaluationFinished) {
+      onFinish();
+    }
+  };
+
+  return (
+    <section>
+      <div className="container mx-auto px-4">
+        <div className="mb-8 max-w-sm mx-auto">
+            <Progress value={progress} className="w-full h-2" />
+            <p className="text-center text-sm text-muted-foreground mt-2">{Math.min(current, total)} de {total}</p>
+        </div>
+        {model ? (
+          <div className="animate-fade-in px-4 sm:px-0 max-w-sm mx-auto">
+            <Card className="mx-auto w-full overflow-hidden rounded-2xl shadow-2xl">
+              <CardHeader className="p-0">
+                <div className="aspect-[4/5] relative bg-black">
+                  {model.videoUrl ? (
+                     <div style={{position: 'relative', width: '100%', paddingTop: '125%', overflow: 'hidden'}}>
+                        <iframe 
+                            src={model.videoUrl}
+                            allow="autoplay"
+                            allowFullScreen
+                            frameBorder="0"
+                            style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 0, pointerEvents: 'none'}}
+                            >
+                        </iframe>
+                    </div>
+                  ) : (
+                    <Image
+                      src={model.evaluationImageUrl ?? model.imageUrl}
+                      alt={`Modelo ${model.name}`}
+                      fill
+                      className="object-cover"
+                      data-ai-hint={model.imageHint}
+                      sizes="(max-width: 640px) 90vw, 384px"
+                      priority={isFirst}
+                      placeholder="blur"
+                      blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOM0wnyfwAFdAK2m0spnAAAAABJRU5ErkJggg=="
+                    />
+                  )}
+                </div>
+              </CardHeader>
+              <CardContent className="p-6 text-center">
+                <CardTitle className="font-headline text-2xl flex items-center justify-center gap-2">
+                  {model.name}
+                  {model.flagUrl && (
+                    <Image
+                      src={model.flagUrl}
+                      alt={`Bandera ${model.nationality}`}
+                      width={24}
+                      height={24}
+                      className="rounded-full object-cover w-6 h-6"
+                    />
+                  )}
+                </CardTitle>
+                {model.persona && <p className="text-muted-foreground text-sm font-semibold mt-1">{model.persona}</p>}
+                <CardDescription className="mt-1">{model.description}</CardDescription>
+                <p className="mt-6 font-semibold text-lg text-foreground">¿Qué te pareció esta modelo?</p>
+              </CardContent>
+              <CardFooter className="grid grid-cols-2 gap-4 p-6 pt-0">
+                <Button
+                  onClick={() => handleRate(false)}
+                  variant="outline"
+                  className="w-full rounded-full py-6 text-base font-bold border-2 border-destructive bg-background text-destructive hover:bg-destructive/10 hover:text-destructive active:scale-95 transition-transform flex items-center justify-center"
+                >
+                  <ThumbsDown className="mr-2 flex-shrink-0" /> <span className="whitespace-nowrap">No me gusta</span>
+                </Button>
+                <Button
+                  onClick={() => handleRate(true)}
+                  className="w-full rounded-full py-6 text-base font-bold bg-primary text-primary-foreground hover:bg-primary/90 active:scale-95 transition-transform flex items-center justify-center"
+                >
+                  <Heart className="mr-2 fill-current flex-shrink-0" /> <span className="whitespace-nowrap">Me gusta</span>
+                </Button>
+              </CardFooter>
+            </Card>
+          </div>
+        ) : null}
+      </div>
+    </section>
+  );
+}

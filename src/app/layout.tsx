@@ -1,11 +1,24 @@
-import type {Metadata} from 'next';
+import type { Metadata, Viewport } from 'next';
+import { Toaster } from "@/components/ui/toaster";
 import './globals.css';
-import { Toaster } from "@/components/ui/toaster"
+import { Space_Grotesk } from 'next/font/google';
+import Script from 'next/script';
+
+const space_grotesk = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-space-grotesk',
+});
 
 export const metadata: Metadata = {
   title: 'ModeloMatch',
-  description: 'Encuentra tu match perfecto',
+  description: 'Evalúa a las modelos más deseadas y descubre tu match perfecto.',
 };
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+}
 
 export default function RootLayout({
   children,
@@ -13,16 +26,31 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
+    <html lang="es" className={`${space_grotesk.variable}`}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet" />
+        <Script
+          src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+          data-utmify-prevent-xcod-sck
+          data-utmify-prevent-subids
+          async
+          defer
+          strategy="beforeInteractive"
+        />
+        <Script id="utmify-pixel" strategy="beforeInteractive">
+          {`
+            window.pixelId = "68d7597df557fac86d7c822b";
+            var a = document.createElement("script");
+            a.setAttribute("async", "");
+            a.setAttribute("defer", "");
+            a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+            document.head.appendChild(a);
+          `}
+        </Script>
       </head>
-      <body className="font-body antialiased">
-        {children}
+      <body className="font-body antialiased flex flex-col min-h-screen">
+        <div className="flex-grow">
+          {children}
+        </div>
         <Toaster />
       </body>
     </html>
