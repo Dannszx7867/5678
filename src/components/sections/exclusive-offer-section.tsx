@@ -2,7 +2,7 @@
 
 import type { Model } from '@/app/data/models';
 import { Button } from '@/components/ui/button';
-import { BadgeCheck, Lock, ArrowDown } from 'lucide-react';
+import { Lock, ArrowDown, CheckCircle, Star } from 'lucide-react';
 import Image from 'next/image';
 
 type ExclusiveOfferSectionProps = {
@@ -10,30 +10,21 @@ type ExclusiveOfferSectionProps = {
   onContinue: () => void;
 };
 
+const IconWrapper = ({ children }: { children: React.ReactNode }) => (
+  <div className="relative w-6 h-6 flex-shrink-0">
+    <div className="absolute inset-0 bg-primary rounded-full blur-sm opacity-60"></div>
+    <div className="relative text-primary-foreground">{children}</div>
+  </div>
+);
+
+
 export default function ExclusiveOfferSection({ model, onContinue }: ExclusiveOfferSectionProps) {
   return (
     <section className="py-12 sm:py-16 bg-background">
       <div className="container mx-auto px-4 max-w-2xl">
-        <div className="text-center mb-8">
-          <h2 className="font-headline text-2xl sm:text-4xl font-bold tracking-tight text-foreground">
-            Continúa el&nbsp;
-            <span className="text-primary [text-shadow:0_0_8px_hsl(var(--primary)/0.7)]">
-              chat
-            </span>
-            &nbsp;con&nbsp;
-            <span className="text-primary [text-shadow:0_0_8px_hsl(var(--primary)/0.7)]">
-              {model.name}
-            </span>
-            &nbsp;pagando solo la&nbsp;
-            <span className="text-primary [text-shadow:0_0_8px_hsl(var(--primary)/0.7)]">
-              tarifa
-            </span>
-            &nbsp;de la plataforma
-          </h2>
-        </div>
 
         <div className="rounded-2xl border bg-card text-card-foreground shadow-lg overflow-hidden">
-          <div className="relative aspect-square sm:aspect-video w-full">
+          <div className="relative w-full aspect-square sm:aspect-[4/3]">
             {model.videoUrl ? (
                <video
                 key={model.videoUrl}
@@ -56,6 +47,26 @@ export default function ExclusiveOfferSection({ model, onContinue }: ExclusiveOf
              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
           </div>
           <div className="p-6">
+            <div className="flex justify-center mb-2">
+                <ArrowDown className="h-8 w-8 text-primary animate-bounce" />
+            </div>
+             <div className="text-center mb-8">
+                <h2 className="font-headline text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
+                    Continúa el&nbsp;
+                    <span className="text-primary [text-shadow:0_0_8px_hsl(var(--primary)/0.7)]">
+                    chat
+                    </span>
+                    &nbsp;con&nbsp;
+                    <span className="text-primary [text-shadow:0_0_8px_hsl(var(--primary)/0.7)]">
+                    {model.name}
+                    </span>
+                    &nbsp;pagando solo la&nbsp;
+                    <span className="text-primary [text-shadow:0_0_8px_hsl(var(--primary)/0.7)]">
+                    tarifa
+                    </span>
+                    &nbsp;de la plataforma
+                </h2>
+            </div>
              <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-6">
                 <div>
                     <span className="text-5xl sm:text-6xl font-bold text-primary [text-shadow:0_0_12px_hsl(var(--primary)/0.8)]">€9,00</span>
@@ -68,15 +79,21 @@ export default function ExclusiveOfferSection({ model, onContinue }: ExclusiveOf
             
             <ul className="space-y-4 text-left mb-6">
                 <li className="flex items-start gap-3">
-                    <BadgeCheck className="h-6 w-6 text-primary [filter:drop-shadow(0_0_3px_hsl(var(--primary)/0.7))]" />
+                    <IconWrapper>
+                      <CheckCircle className="h-6 w-6" />
+                    </IconWrapper>
                     <span>Acceso Exclusivo a TODO el contenido de <span className="font-semibold">{model.name}</span> (y de todas las demás también!).</span>
                 </li>
                  <li className="flex items-start gap-3">
-                    <BadgeCheck className="h-6 w-6 text-primary [filter:drop-shadow(0_0_3px_hsl(var(--primary)/0.7))]" />
+                    <IconWrapper>
+                      <CheckCircle className="h-6 w-6" />
+                    </IconWrapper>
                     <span>Desbloquea el <span className="font-semibold">WhatsApp</span> de <span className="font-semibold">{model.name}</span> para conversaciones privadas.</span>
                 </li>
                 <li className="flex items-start gap-3">
-                    <BadgeCheck className="h-6 w-6 text-primary [filter:drop-shadow(0_0_3px_hsl(var(--primary)/0.7))]" />
+                    <IconWrapper>
+                      <Star className="h-6 w-6" />
+                    </IconWrapper>
                     <span>Participa en un sorteo exclusivo para un viaje en yate con varias modelos. ¡Una experiencia inolvidable!</span>
                 </li>
             </ul>
