@@ -128,33 +128,28 @@ export default function ChatSimulationSection({ model, onContinue }: ChatSimulat
         break;
         
       case 7: // Audio 3
-        simulateRecordingAndAddAudio('audio3', () => runChatFlow(8));
+        simulateRecordingAndAddAudio('audio3', () => {
+          setIsTyping(false);
+          setAwaitingUserResponse(true);
+        });
         break;
         
-      case 8: // Quieres ver?
-         setTimeout(() => {
-            addMessage({ sender: 'model', type: 'text', content: '¿quieres ver?🤤' });
-            setIsTyping(false);
-            setAwaitingUserResponse(true);
-        }, 4200);
+      case 8: // Audio 4
+        simulateRecordingAndAddAudio('audio4', () => runChatFlow(9));
         break;
       
-      case 9: // Audio 4
-        simulateRecordingAndAddAudio('audio4', () => runChatFlow(10));
-        break;
-        
-      case 10: // New message after audio 4
+      case 9: // New message after audio 4
         setTimeout(() => {
           setIsTyping(true);
           setTimeout(() => {
             addMessage({ sender: 'model', type: 'text', content: 'Haz clic aquí para tenerme a mí y a mis amigas, amor😍👇' });
             setIsTyping(false);
-            runChatFlow(11);
+            runChatFlow(10);
           }, 1500)
         }, 15800); // 15.8 seconds
         break;
 
-      case 11: // Finish chat
+      case 10: // Finish chat
         setTimeout(() => {
             setIsTyping(false);
             setIsChatFinished(true);
@@ -180,7 +175,7 @@ export default function ChatSimulationSection({ model, onContinue }: ChatSimulat
         1: 2,  // After "Hola, como estas" -> Audio 1
         4: 5,  // After "Déjame ver" -> Blurred image
         6: 7,  // After "Te gusto?" -> Audio 3
-        8: 9   // After "Quieres ver?" -> Audio 4
+        7: 8   // After Audio 3 -> Audio 4
     };
 
     if (nextStepMap[currentStep]) {
