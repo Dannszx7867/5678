@@ -77,6 +77,11 @@ export default function Top3Section({ models: allModels, onContact, onContinue }
             </div>
             ))}
         </div>
+        <div className="text-center mt-12">
+            <Button onClick={onContinue} size="lg" className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90 text-lg font-semibold px-10 py-6 transition-transform hover:scale-105 active:scale-95 shadow-lg">
+                Continuar
+            </Button>
+        </div>
       </div>
     </section>
   );

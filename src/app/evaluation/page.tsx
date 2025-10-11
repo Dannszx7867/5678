@@ -10,7 +10,6 @@ import Header from '@/components/layout/header';
 import EvaluationSection from '@/components/sections/evaluation-section';
 import Top3Section from '@/components/sections/top3-section';
 import ChatSimulationSection from '@/components/sections/chat-simulation-section';
-import PricingSection from '@/components/sections/pricing-section';
 import CheckoutSection from '@/components/sections/checkout-section';
 import EvaluationCompletePopup from '@/components/sections/evaluation-complete-popup';
 
@@ -20,7 +19,7 @@ import { Button } from '@/components/ui/button';
 import { CheckCircle } from 'lucide-react';
 import Footer from '@/components/layout/footer';
 
-type Step = 'evaluating' | 'top3' | 'chat' | 'pricing' | 'checkout';
+type Step = 'evaluating' | 'top3' | 'chat' | 'checkout';
 type Rating = { modelId: string; modelName: string; rating: boolean };
 
 
@@ -36,7 +35,6 @@ function EvaluationContent() {
   const [showCompletionPopup, setShowCompletionPopup] = useState(false);
 
   const top3Ref = useRef<HTMLDivElement>(null);
-  const pricingRef = useRef<HTMLDivElement>(null);
   const checkoutRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -76,14 +74,6 @@ function EvaluationContent() {
     setSelectedModelForChat(model);
     setStep('chat');
     saveProgress(ratings, currentModelIndex, 'chat', model.id);
-  };
-
-  const showPricing = () => {
-    setStep('pricing');
-    saveProgress(ratings, currentModelIndex, 'pricing', selectedModelForChat?.id ?? null);
-    setTimeout(() => {
-      pricingRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 100);
   };
   
   const showCheckout = () => {
@@ -128,7 +118,7 @@ function EvaluationContent() {
   const [isPremium, setIsPremium] = useState(false);
 
   if (step === 'chat' && selectedModelForChat) {
-    return <ChatSimulationSection model={selectedModelForChat} onContinue={showPricing} />
+    return <ChatSimulationSection model={selectedModelForChat} onContinue={showCheckout} />
   }
 
   return (
@@ -162,13 +152,7 @@ function EvaluationContent() {
         
         {step === 'top3' && (
           <div ref={top3Ref} className="scroll-mt-16">
-            <Top3Section models={allModels} onContact={showChat} onContinue={showPricing} />
-          </div>
-        )}
-
-        {step === 'pricing' && (
-            <div ref={pricingRef} className="scroll-mt-16">
-            <PricingSection onContinue={showCheckout} />
+            <Top3Section models={allModels} onContact={showChat} onContinue={showCheckout} />
           </div>
         )}
 

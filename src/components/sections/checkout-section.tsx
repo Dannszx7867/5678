@@ -38,8 +38,18 @@ export default function CheckoutSection({ onContinue, onPlanChange }: CheckoutSe
   return (
     <section className="py-16 sm:py-24 bg-background">
       <div className="container mx-auto px-4 max-w-2xl">
+        <div className="text-center mb-12">
+            <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+                Continúa el chat con tu modelo favorita pagando solo la tarifa
+            </h2>
+        </div>
 
         <Card className="mb-8 rounded-2xl bg-primary/5 border border-primary/20">
+          <CardHeader>
+            <CardTitle className="font-headline text-2xl text-center text-primary flex items-center justify-center gap-2">
+              Resumen del pedido
+            </CardTitle>
+          </CardHeader>
           <CardContent className="p-6 grid sm:grid-cols-1 gap-6">
              <div className="flex items-start gap-4">
               <Mail className="h-8 w-8 text-primary flex-shrink-0 mt-1" />
@@ -62,19 +72,21 @@ export default function CheckoutSection({ onContinue, onPlanChange }: CheckoutSe
                     <p className="text-sm text-muted-foreground">El pago se realizará a través del checkout oficial de la plataforma de pagos MUNDPAY, lo que nos permite garantizar seguridad y privacidad en todo momento.</p>
                 </div>
             </div>
-             <div className="mt-4 flex items-center justify-center space-x-3">
-                <Checkbox id="terms" onCheckedChange={(checked) => setTermsAccepted(!!checked)} checked={termsAccepted} className="w-5 h-5"/>
-                <Label htmlFor="terms" className="text-base text-foreground/90 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                  He leído y acepto los <a href="#" className="underline hover:text-primary">términos y políticas</a> de la plataforma.
-                </Label>
-            </div>
           </CardContent>
         </Card>
+        
+        <div className="mt-4 flex items-center justify-center space-x-3 mb-8">
+            <Checkbox id="terms" onCheckedChange={(checked) => setTermsAccepted(!!checked)} checked={termsAccepted} className="w-5 h-5"/>
+            <Label htmlFor="terms" className="text-base text-foreground/90 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+              He leído y acepto los <a href="#" className="underline hover:text-primary">términos y políticas</a> de la plataforma.
+            </Label>
+        </div>
+
 
         <Card className={`mb-8 rounded-2xl border-2 bg-primary/5 transition-all duration-300 ${isPremium ? 'border-primary shadow-lg shadow-primary/20' : 'border-dashed border-primary'}`}>
             <CardHeader>
-                <CardTitle className="font-headline text-2xl text-center text-primary flex items-center justify-center gap-2">
-                    <ArrowDown className="h-6 w-6"/> OFERTA ESPECIAL <ArrowDown className="h-6 w-6"/>
+                <CardTitle className="font-headline text-lg text-center text-primary flex items-center justify-center gap-2">
+                    <Star className="h-5 w-5"/> UPGRADE DISPONIBLE 
                 </CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col sm:flex-row items-center justify-between gap-4 p-6 pt-0">
@@ -87,8 +99,7 @@ export default function CheckoutSection({ onContinue, onPlanChange }: CheckoutSe
                     <div className="flex items-center space-x-2">
                         <Switch id="premium-plan" checked={isPremium} onCheckedChange={handlePlanChange} aria-label="Cambiar a plan premium"/>
                         <Label htmlFor="premium-plan" className="font-bold flex items-center gap-1 cursor-pointer">
-                            <Star className="h-4 w-4 fill-amber-300 text-amber-500" />
-                            <span>Premium</span>
+                            <span>Activar</span>
                         </Label>
                     </div>
                 </div>
@@ -101,7 +112,7 @@ export default function CheckoutSection({ onContinue, onPlanChange }: CheckoutSe
           disabled={!termsAccepted}
           onClick={handleCheckout}
         >
-          Desbloquear todo por €{ctaPrice}
+          Pagar €{ctaPrice}
         </Button>
 
         <p className="mt-4 text-xs text-muted-foreground text-center">
