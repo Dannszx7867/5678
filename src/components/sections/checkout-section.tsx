@@ -45,11 +45,6 @@ export default function CheckoutSection({ onContinue, onPlanChange }: CheckoutSe
         </div>
 
         <Card className="mb-8 rounded-2xl bg-primary/5 border border-primary/20">
-          <CardHeader>
-            <CardTitle className="font-headline text-2xl text-center text-primary flex items-center justify-center gap-2">
-              Resumen del pedido
-            </CardTitle>
-          </CardHeader>
           <CardContent className="p-6 grid sm:grid-cols-1 gap-6">
              <div className="flex items-start gap-4">
               <Mail className="h-8 w-8 text-primary flex-shrink-0 mt-1" />
