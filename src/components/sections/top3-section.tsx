@@ -1,3 +1,5 @@
+'use client';
+
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -7,10 +9,9 @@ import { ArrowDown, MessageCircle } from "lucide-react";
 type Top3SectionProps = {
   models: Model[];
   onContact: (model: Model) => void;
-  onContinue: () => void;
 };
 
-export default function Top3Section({ models: allModels, onContact, onContinue }: Top3SectionProps) {
+export default function Top3Section({ models: allModels, onContact }: Top3SectionProps) {
 
   return (
     <section className="py-16 sm:py-24 bg-gray-50/50">

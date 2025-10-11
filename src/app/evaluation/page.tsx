@@ -12,6 +12,7 @@ import Top3Section from '@/components/sections/top3-section';
 import ChatSimulationSection from '@/components/sections/chat-simulation-section';
 import CheckoutSection from '@/components/sections/checkout-section';
 import EvaluationCompletePopup from '@/components/sections/evaluation-complete-popup';
+import ExclusiveOfferSection from '@/components/sections/exclusive-offer-section';
 
 
 import { models, type Model } from '@/app/data/models';
@@ -19,7 +20,7 @@ import { Button } from '@/components/ui/button';
 import { CheckCircle } from 'lucide-react';
 import Footer from '@/components/layout/footer';
 
-type Step = 'evaluating' | 'top3' | 'chat' | 'checkout';
+type Step = 'evaluating' | 'top3' | 'chat' | 'exclusive_offer' | 'checkout';
 type Rating = { modelId: string; modelName: string; rating: boolean };
 
 
@@ -35,6 +36,7 @@ function EvaluationContent() {
   const [showCompletionPopup, setShowCompletionPopup] = useState(false);
 
   const top3Ref = useRef<HTMLDivElement>(null);
+  const exclusiveOfferRef = useRef<HTMLDivElement>(null);
   const checkoutRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -74,6 +76,14 @@ function EvaluationContent() {
     setSelectedModelForChat(model);
     setStep('chat');
     saveProgress(ratings, currentModelIndex, 'chat', model.id);
+  };
+
+  const showExclusiveOffer = () => {
+    setStep('exclusive_offer');
+    saveProgress(ratings, currentModelIndex, 'exclusive_offer', selectedModelForChat?.id ?? null);
+    setTimeout(() => {
+      exclusiveOfferRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
   };
   
   const showCheckout = () => {
@@ -118,7 +128,7 @@ function EvaluationContent() {
   const [isPremium, setIsPremium] = useState(false);
 
   if (step === 'chat' && selectedModelForChat) {
-    return <ChatSimulationSection model={selectedModelForChat} onContinue={showCheckout} />
+    return <ChatSimulationSection model={selectedModelForChat} onContinue={showExclusiveOffer} />
   }
 
   return (
@@ -152,7 +162,13 @@ function EvaluationContent() {
         
         {step === 'top3' && (
           <div ref={top3Ref} className="scroll-mt-16">
-            <Top3Section models={allModels} onContact={showChat} onContinue={showCheckout} />
+            <Top3Section models={allModels} onContact={showChat} />
+          </div>
+        )}
+
+        {step === 'exclusive_offer' && selectedModelForChat && (
+          <div ref={exclusiveOfferRef} className="scroll-mt-16">
+            <ExclusiveOfferSection model={selectedModelForChat} onContinue={showCheckout} />
           </div>
         )}
 
