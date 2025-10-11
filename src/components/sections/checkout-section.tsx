@@ -38,12 +38,7 @@ export default function CheckoutSection({ onContinue, onPlanChange }: CheckoutSe
   return (
     <section className="py-16 sm:py-24 bg-background">
       <div className="container mx-auto px-4 max-w-2xl">
-        <div className="text-center mb-12">
-            <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-                Continúa el chat con tu modelo favorita pagando solo la tarifa
-            </h2>
-        </div>
-
+        
         <Card className="mb-8 rounded-2xl bg-primary/5 border border-primary/20">
           <CardContent className="p-6 grid sm:grid-cols-1 gap-6">
              <div className="flex items-start gap-4">

@@ -2,7 +2,7 @@
 
 import type { Model } from '@/app/data/models';
 import { Button } from '@/components/ui/button';
-import { Lock, ArrowDown, CheckCircle, Star } from 'lucide-react';
+import { Lock, ArrowDown } from 'lucide-react';
 import Image from 'next/image';
 
 type ExclusiveOfferSectionProps = {
@@ -24,6 +24,10 @@ export default function ExclusiveOfferSection({ model, onContinue }: ExclusiveOf
       <div className="container mx-auto px-4 max-w-2xl">
 
         <div className="rounded-2xl border bg-card text-card-foreground shadow-lg overflow-hidden">
+           <div className="p-6 text-center">
+             <h2 className="font-headline text-xl font-bold text-foreground">Tú elegiste</h2>
+             <p className="text-primary font-semibold text-lg">{model.name}</p>
+           </div>
           <div className="relative w-full aspect-square sm:aspect-[4/3]">
             {model.videoUrl ? (
                <video
@@ -51,7 +55,7 @@ export default function ExclusiveOfferSection({ model, onContinue }: ExclusiveOf
                 <ArrowDown className="h-8 w-8 text-primary animate-bounce" />
             </div>
              <div className="text-center mb-8">
-                <h2 className="font-headline text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
+                <h2 className="font-headline text-xl sm:text-2xl font-bold tracking-tight text-foreground">
                     Continúa el&nbsp;
                     <span className="text-primary [text-shadow:0_0_8px_hsl(var(--primary)/0.7)]">
                     chat
@@ -80,19 +84,19 @@ export default function ExclusiveOfferSection({ model, onContinue }: ExclusiveOf
             <ul className="space-y-4 text-left mb-6">
                 <li className="flex items-start gap-3">
                     <IconWrapper>
-                      <CheckCircle className="h-6 w-6" />
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
                     </IconWrapper>
                     <span>Acceso Exclusivo a TODO el contenido de <span className="font-semibold">{model.name}</span> (y de todas las demás también!).</span>
                 </li>
                  <li className="flex items-start gap-3">
                     <IconWrapper>
-                      <CheckCircle className="h-6 w-6" />
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
                     </IconWrapper>
-                    <span>Desbloquea el <span className="font-semibold">WhatsApp</span> de <span className="font-semibold">{model.name}</span> para conversaciones privadas.</span>
+                    <span>Desbloquea el <span className="font-semibold text-primary">WhatsApp</span> de <span className="font-semibold">{model.name}</span> para conversaciones privadas.</span>
                 </li>
                 <li className="flex items-start gap-3">
                     <IconWrapper>
-                      <Star className="h-6 w-6" />
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
                     </IconWrapper>
                     <span>Participa en un sorteo exclusivo para un viaje en yate con varias modelos. ¡Una experiencia inolvidable!</span>
                 </li>
