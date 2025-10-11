@@ -52,6 +52,7 @@ export default function EvaluationSection({ model, onRate, onFinish, current, to
                           playsInline
                           preload="auto"
                           className="w-full h-full object-cover block"
+                          style={{ willChange: 'transform' }}
                         />
                         <div
                           className="video-overlay"

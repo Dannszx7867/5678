@@ -28,6 +28,12 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${space_grotesk.variable}`}>
       <head>
+        <link rel="preload" href="/video_01.mp4" as="video" type="video/mp4" />
+        <link rel="preload" href="/video_02.mp4" as="video" type="video/mp4" />
+        <link rel="preload" href="/video_03.mp4" as="video" type="video/mp4" />
+        <link rel="preload" href="/video_04.mp4" as="video" type="video/mp4" />
+        <link rel="preload" href="/video_05.mp4" as="video" type="video/mp4" />
+        <link rel="preload" href="/video_06.mp4" as="video" type="video/mp4" />
         <Script
           src="https://cdn.utmify.com.br/scripts/utms/latest.js"
           data-utmify-prevent-xcod-sck

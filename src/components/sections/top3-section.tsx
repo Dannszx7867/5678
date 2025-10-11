@@ -27,7 +27,7 @@ export default function Top3Section({ models: allModels, onContact }: Top3Sectio
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
-            {allModels.map((model) => (
+            {allModels.map((model, index) => (
             <div key={model.id} className="h-full">
                 <Card className="overflow-hidden rounded-2xl shadow-lg animate-fade-in flex flex-col h-full">
                     <CardHeader className="p-0">
@@ -39,6 +39,8 @@ export default function Top3Section({ models: allModels, onContact }: Top3Sectio
                         className="object-cover"
                         data-ai-hint={model.imageHint}
                         sizes="(max-width: 767px) 50vw, 33vw"
+                        priority={index < 3}
+                        loading={index < 3 ? 'eager' : 'lazy'}
                         />
                         <div className="absolute top-2 left-2 bg-green-500/80 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1 border border-white/30">
                             <span className="relative flex h-2 w-2">
@@ -60,6 +62,7 @@ export default function Top3Section({ models: allModels, onContact }: Top3Sectio
                             width={18}
                             height={18}
                             className="rounded-full object-cover w-4 h-4 sm:w-6 sm:h-6"
+                            loading="lazy"
                             />
                         )}
                         </CardTitle>

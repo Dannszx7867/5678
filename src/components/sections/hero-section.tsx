@@ -65,6 +65,7 @@ export default function HeroSection({ onStart }: HeroSectionProps) {
                         priority={index < 3}
                         placeholder="blur"
                         blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOM0wnyfwAFdAK2m0spnAAAAABJRU5ErkJggg=="
+                        loading={index < 3 ? 'eager' : 'lazy'}
                       />
                       <div className="absolute inset-0 bg-black/50"></div>
                       <div className="absolute bottom-0 left-0 right-0 h-2/5 bg-gradient-to-t from-black/80 to-transparent p-4 flex flex-col justify-end text-center">
@@ -78,6 +79,7 @@ export default function HeroSection({ onStart }: HeroSectionProps) {
                                 width={20}
                                 height={20}
                                 className="rounded-full object-cover w-5 h-5"
+                                loading="lazy"
                               />
                             )}
                           </p>

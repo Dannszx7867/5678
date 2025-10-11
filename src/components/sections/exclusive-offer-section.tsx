@@ -25,8 +25,8 @@ export default function ExclusiveOfferSection({ model, onContinue }: ExclusiveOf
 
         <div className="rounded-2xl border bg-card text-card-foreground shadow-lg overflow-hidden">
            <div className="p-6 text-center">
-             <h2 className="font-headline text-2xl sm:text-3xl font-bold text-foreground">Tú elegiste</h2>
              <div className="flex items-center justify-center gap-3 mt-2">
+                <h2 className="font-headline text-2xl sm:text-3xl font-bold text-foreground">Tú elegiste</h2>
                 <Image
                     src={model.imageUrl}
                     alt={model.name}
@@ -58,6 +58,7 @@ export default function ExclusiveOfferSection({ model, onContinue }: ExclusiveOf
                     playsInline
                     preload="auto"
                     className="w-full h-full object-cover block"
+                    style={{ willChange: 'transform' }}
                 />
                 ) : (
                     <Image
@@ -65,6 +66,7 @@ export default function ExclusiveOfferSection({ model, onContinue }: ExclusiveOf
                         alt={model.name}
                         fill
                         className="object-cover"
+                        priority
                     />
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
