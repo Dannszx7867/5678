@@ -31,7 +31,7 @@ export default function Top3Section({ models: allModels, onContact }: Top3Sectio
             <div key={model.id} className="h-full">
                 <Card className="overflow-hidden rounded-2xl shadow-lg animate-fade-in flex flex-col h-full">
                     <CardHeader className="p-0">
-                    <div className="aspect-[4/5] relative">
+                    <div className="aspect-square relative">
                         <Image
                         src={model.imageUrl}
                         alt={`Modelo ${model.name}`}
