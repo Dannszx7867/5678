@@ -62,16 +62,14 @@ export default function CheckoutSection({ onContinue, onPlanChange }: CheckoutSe
                     <p className="text-sm text-muted-foreground">El pago se realizará a través del checkout oficial de la plataforma de pagos MUNDPAY, lo que nos permite garantizar seguridad y privacidad en todo momento.</p>
                 </div>
             </div>
+            <div className="mt-4 flex items-center justify-center space-x-3">
+                <Checkbox id="terms" onCheckedChange={(checked) => setTermsAccepted(!!checked)} checked={termsAccepted} className="w-5 h-5"/>
+                <Label htmlFor="terms" className="text-base text-foreground/90 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                He leído y acepto los <a href="#" className="underline hover:text-primary">términos y políticas</a> de la plataforma.
+                </Label>
+            </div>
           </CardContent>
         </Card>
-        
-        <div className="mt-4 flex items-center justify-center space-x-3 mb-8">
-            <Checkbox id="terms" onCheckedChange={(checked) => setTermsAccepted(!!checked)} checked={termsAccepted} className="w-5 h-5"/>
-            <Label htmlFor="terms" className="text-base text-foreground/90 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-              He leído y acepto los <a href="#" className="underline hover:text-primary">términos y políticas</a> de la plataforma.
-            </Label>
-        </div>
-
 
         <Card className={`mb-8 rounded-2xl border-2 bg-primary/5 transition-all duration-300 ${isPremium ? 'border-primary shadow-lg shadow-primary/20' : 'border-dashed border-primary'}`}>
             <CardHeader>

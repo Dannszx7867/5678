@@ -25,8 +25,8 @@ export default function ExclusiveOfferSection({ model, onContinue }: ExclusiveOf
 
         <div className="rounded-2xl border bg-card text-card-foreground shadow-lg overflow-hidden">
            <div className="p-6 text-center">
-             <h2 className="font-headline text-xl font-bold text-foreground">Tú elegiste</h2>
-             <p className="text-primary font-semibold text-lg">{model.name}</p>
+             <h2 className="font-headline text-2xl sm:text-3xl font-bold text-foreground">Tú elegiste</h2>
+             <p className="text-primary font-semibold text-2xl sm:text-3xl mt-1">{model.name}</p>
            </div>
           <div className="relative w-full aspect-square sm:aspect-[4/3]">
             {model.videoUrl ? (
@@ -55,7 +55,7 @@ export default function ExclusiveOfferSection({ model, onContinue }: ExclusiveOf
                 <ArrowDown className="h-8 w-8 text-primary animate-bounce" />
             </div>
              <div className="text-center mb-8">
-                <h2 className="font-headline text-xl sm:text-2xl font-bold tracking-tight text-foreground">
+                <h2 className="font-headline text-xl sm:text-3xl font-bold tracking-tight text-foreground">
                     Continúa el&nbsp;
                     <span className="text-primary [text-shadow:0_0_8px_hsl(var(--primary)/0.7)]">
                     chat
@@ -101,11 +101,6 @@ export default function ExclusiveOfferSection({ model, onContinue }: ExclusiveOf
                     <span>Participa en un sorteo exclusivo para un viaje en yate con varias modelos. ¡Una experiencia inolvidable!</span>
                 </li>
             </ul>
-
-            <div className="flex justify-center my-4">
-              <ArrowDown className="h-10 w-10 text-primary animate-bounce" />
-            </div>
-
             <Button
                 onClick={onContinue}
                 size="lg"
