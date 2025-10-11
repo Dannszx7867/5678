@@ -26,32 +26,52 @@ export default function ExclusiveOfferSection({ model, onContinue }: ExclusiveOf
         <div className="rounded-2xl border bg-card text-card-foreground shadow-lg overflow-hidden">
            <div className="p-6 text-center">
              <h2 className="font-headline text-2xl sm:text-3xl font-bold text-foreground">Tú elegiste</h2>
-             <p className="text-primary font-semibold text-2xl sm:text-3xl mt-1">{model.name}</p>
-           </div>
-          <div className="relative w-full aspect-square sm:aspect-[4/3]">
-            {model.videoUrl ? (
-               <video
-                key={model.videoUrl}
-                src={model.videoUrl}
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="auto"
-                className="w-full h-full object-cover block"
-               />
-            ) : (
+             <div className="flex items-center justify-center gap-3 mt-2">
                 <Image
                     src={model.imageUrl}
                     alt={model.name}
-                    fill
-                    className="object-cover"
+                    width={48}
+                    height={48}
+                    className="rounded-full object-cover border-2 border-primary"
                 />
-            )}
-             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                <p className="text-primary font-semibold text-2xl sm:text-3xl">{model.name}</p>
+                {model.flagUrl && (
+                    <Image
+                        src={model.flagUrl}
+                        alt={`Bandera ${model.nationality}`}
+                        width={28}
+                        height={28}
+                        className="rounded-full object-cover w-7 h-7"
+                    />
+                )}
+             </div>
+           </div>
+          <div className="relative w-full aspect-square sm:aspect-[4/3] p-2">
+            <div className="relative w-full h-full rounded-xl overflow-hidden shadow-lg shadow-black/30">
+                {model.videoUrl ? (
+                <video
+                    key={model.videoUrl}
+                    src={model.videoUrl}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="auto"
+                    className="w-full h-full object-cover block"
+                />
+                ) : (
+                    <Image
+                        src={model.imageUrl}
+                        alt={model.name}
+                        fill
+                        className="object-cover"
+                    />
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+            </div>
           </div>
           <div className="p-6">
-            <div className="flex justify-center mb-2">
+            <div className="flex justify-center mb-4">
                 <ArrowDown className="h-8 w-8 text-primary animate-bounce" />
             </div>
              <div className="text-center mb-8">
