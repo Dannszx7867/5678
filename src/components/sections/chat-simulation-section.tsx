@@ -30,7 +30,7 @@ const audioMap: { [key: string]: string } = {
   audio1: '9ybr27cnqh',
   audio2: '6l3ti82ptt',
   audio3: 'yz8139pbct',
-  audio4: 'zc9g9r3w2l',
+  audio4: 'e7hqkyehf3',
 };
 
 const WistiaAudioPlayer = ({ mediaId }: { mediaId: string }) => {
@@ -307,3 +307,5 @@ export default function ChatSimulationSection({ model, onContinue }: ChatSimulat
     </section>
   );
 }
+
+    
