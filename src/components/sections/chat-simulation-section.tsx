@@ -146,7 +146,7 @@ export default function ChatSimulationSection({ model, onContinue }: ChatSimulat
             setIsTyping(false);
             runChatFlow(10);
           }, 1500)
-        }, 15800); // 15.8 seconds
+        }, 26000); // 26 seconds
         break;
 
       case 10: // Finish chat
