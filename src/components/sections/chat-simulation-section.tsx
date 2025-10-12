@@ -229,7 +229,7 @@ export default function ChatSimulationSection({ model, onContinue }: ChatSimulat
                     <div className={cn('flex items-end', msg.sender === 'user' ? 'justify-end' : 'justify-start')}>
                         {msg.sender === 'model' && (
                             <div className="mr-2 h-10 w-10 overflow-hidden rounded-full flex-shrink-0">
-                            <Image alt="Profile" width="40" height="40" className="h-full w-full object-cover" src={model.imageUrl} />
+                            <Image alt="Profile" width="40" height="40" className="h-full w-full object-cover" src={model.imageUrl} loading="lazy" />
                             </div>
                         )}
                         <div className={cn('max-w-[75%] rounded-2xl px-4 py-3', 
@@ -242,7 +242,7 @@ export default function ChatSimulationSection({ model, onContinue }: ChatSimulat
                             {msg.type === 'audio' && <WistiaAudioPlayer mediaId={audioMap[msg.content]} />}
                             {msg.type === 'video' && (
                                 <div className="relative aspect-square w-48 h-48 rounded-lg overflow-hidden">
-                                    <video src={msg.content} autoPlay muted loop playsInline className="w-full h-full object-cover" />
+                                    <video src={msg.content} autoPlay muted loop playsInline preload="auto" className="w-full h-full object-cover" style={{ willChange: 'transform' }} />
                                 </div>
                             )}
                             {msg.type === 'button' && msg.onButtonClick && (
@@ -263,7 +263,7 @@ export default function ChatSimulationSection({ model, onContinue }: ChatSimulat
               {(isTyping && !isRecording) && (
                 <div className="flex justify-start items-end">
                   <div className="mr-2 h-10 w-10 overflow-hidden rounded-full flex-shrink-0">
-                    <Image alt="Profile" width="40" height="40" className="h-full w-full object-cover" src={model.imageUrl} />
+                    <Image alt="Profile" width="40" height="40" className="h-full w-full object-cover" src={model.imageUrl} loading="lazy" />
                   </div>
                   <div className="max-w-[75%] rounded-2xl px-4 py-3 bg-gray-100 text-gray-900 rounded-bl-none">
                     <div className="flex items-center space-x-1">

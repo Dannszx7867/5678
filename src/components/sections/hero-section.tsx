@@ -61,7 +61,7 @@ export default function HeroSection({ onStart }: HeroSectionProps) {
                         fill
                         className="h-full w-full object-cover transition-transform hover:scale-105"
                         data-ai-hint={model.imageHint}
-                        sizes="(max-width: 640px) 90vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 33vw"
+                        sizes="(max-width: 640px) 90vw, (max-width: 768px) 50vw, 33vw"
                         priority={index < 3}
                         placeholder="blur"
                         blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOM0wnyfwAFdAK2m0spnAAAAABJRU5ErkJggg=="

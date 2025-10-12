@@ -72,7 +72,7 @@ export default function EvaluationSection({ model, onRate, onFinish, current, to
                           <span style={{ fontWeight: '600', display: 'flex', alignItems: 'center', gap: '8px' }}>
                             {model.name}
                             {model.flagUrl && (
-                              <Image src={model.flagUrl} alt={`Bandera ${model.nationality}`} width={20} height={20} className="rounded-full" />
+                              <Image src={model.flagUrl} alt={`Bandera ${model.nationality}`} width={20} height={20} className="rounded-full" loading="lazy" />
                             )}
                           </span>
                           <span style={{ opacity: 0.9 }}>@{model.persona}</span>
