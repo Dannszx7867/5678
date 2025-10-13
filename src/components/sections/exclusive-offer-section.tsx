@@ -67,15 +67,13 @@ export default function ExclusiveOfferSection({ model, onContinue }: ExclusiveOf
                         fill
                         className="object-cover"
                         priority
+                        style={{ willChange: 'transform' }}
                     />
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
             </div>
           </div>
           <div className="p-6">
-            <div className="flex justify-center mb-4">
-                <ArrowDown className="h-8 w-8 text-primary animate-bounce" />
-            </div>
              <div className="text-center mb-8">
                 <h2 className="font-headline text-xl sm:text-3xl font-bold tracking-tight text-foreground">
                     Continúa el&nbsp;
@@ -123,6 +121,9 @@ export default function ExclusiveOfferSection({ model, onContinue }: ExclusiveOf
                     <span>Participa en un sorteo exclusivo para un viaje en yate con varias modelos. ¡Una experiencia inolvidable!</span>
                 </li>
             </ul>
+             <div className="flex justify-center mb-4">
+                <ArrowDown className="h-8 w-8 text-primary animate-bounce" />
+            </div>
             <Button
                 onClick={onContinue}
                 size="lg"

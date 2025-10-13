@@ -307,5 +307,3 @@ export default function ChatSimulationSection({ model, onContinue }: ChatSimulat
     </section>
   );
 }
-
-    

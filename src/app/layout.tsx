@@ -18,6 +18,7 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
+  userScalable: false,
 }
 
 export default function RootLayout({
@@ -28,6 +29,8 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${space_grotesk.variable}`}>
       <head>
+        <link rel="preconnect" href="https://i.imgur.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://i.imgur.com" />
         <link rel="preload" href="/video_01.mp4" as="video" type="video/mp4" />
         <link rel="preload" href="/video_02.mp4" as="video" type="video/mp4" />
         <link rel="preload" href="/video_03.mp4" as="video" type="video/mp4" />
