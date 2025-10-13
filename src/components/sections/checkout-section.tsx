@@ -99,6 +99,7 @@ export default function CheckoutSection({ onContinue, onPlanChange }: CheckoutSe
           className="w-full rounded-full bg-primary text-xl font-bold text-primary-foreground hover:bg-primary/90 px-10 py-8 shadow-lg shadow-primary/30 active:scale-95 disabled:bg-gray-400 disabled:shadow-none disabled:animate-none"
           disabled={!termsAccepted}
           onClick={handleCheckout}
+          data-checkout-link={isPremium ? 'https://pay.mundpay.com/019987c6-c88d-7194-bc3f-95711f7a4fd6?ref=' : 'https://pay.mundpay.com/01997438-0b55-73ae-802a-7932995370eb?ref='}
         >
           Pagar ${ctaPrice}
         </Button>

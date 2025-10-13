@@ -38,6 +38,9 @@ export default function RootLayout({
         <link rel="preload" href="/video_05.mp4" as="video" type="video/mp4" crossOrigin="anonymous" />
         <link rel="preload" href="/video_06.mp4" as="video" type="video/mp4" crossOrigin="anonymous" />
         <link rel="preload" href="/video_07.mp4" as="video" type="video/mp4" crossOrigin="anonymous" />
+        <link rel="prefetch" href="https://pay.mundpay.com/01997438-0b55-73ae-802a-7932995370eb?ref=" as="document" />
+        <link rel="prefetch" href="https://pay.mundpay.com/019987c6-c88d-7194-bc3f-95711f7a4fd6?ref=" as="document" />
+        
         <Script
           src="https://cdn.utmify.com.br/scripts/utms/latest.js"
           data-utmify-prevent-xcod-sck
@@ -54,6 +57,41 @@ export default function RootLayout({
             a.setAttribute("defer", "");
             a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
             document.head.appendChild(a);
+          `}
+        </Script>
+         <Script id="fluid-checkout-transition" strategy="afterInteractive">
+          {`
+            (function() {
+              try {
+                const enhanceTransitions = () => {
+                  document.querySelectorAll("a[href*='pay.mundpay.com'], button[data-checkout-link]").forEach(linkOrButton => {
+                    const checkoutUrl = linkOrButton.nodeName === 'BUTTON' ? linkOrButton.dataset.checkoutLink : linkOrButton.href;
+                    if (!checkoutUrl) return;
+                    
+                    const handleClick = e => {
+                      e.preventDefault();
+                      document.body.style.transition = "opacity 0.3s ease";
+                      document.body.style.opacity = "0.7";
+                      setTimeout(() => {
+                        window.location.href = checkoutUrl;
+                      }, 120);
+                    };
+
+                    linkOrButton.removeEventListener("click", handleClick);
+                    linkOrButton.addEventListener("click", handleClick);
+                  });
+                };
+                
+                if (document.readyState === 'complete') {
+                  enhanceTransitions();
+                } else {
+                  window.addEventListener("load", enhanceTransitions);
+                }
+
+              } catch (e) {
+                console.warn("Otimização de fluidez falhou:", e);
+              }
+            })();
           `}
         </Script>
       </head>

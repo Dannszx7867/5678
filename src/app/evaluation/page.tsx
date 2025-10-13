@@ -40,11 +40,17 @@ function EvaluationContent() {
   const checkoutRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Always start fresh, remove any saved progress to prevent skipping steps.
-    if (typeof window !== 'undefined') {
+    const isAdmin = searchParams.get('admin') === 'true';
+    if (isAdmin) {
+      console.log("🔓 [ADMIN MODE] Bloqueio desativado para ambiente de edição/teste. Nenhuma restrição será aplicada.");
+      localStorage.removeItem('typebot_lock');
+    }
+
+    // Always start fresh, remove any saved progress to prevent skipping steps, unless admin.
+    if (typeof window !== 'undefined' && !isAdmin) {
       localStorage.removeItem('avaliador-progress-v1');
     }
-  }, []);
+  }, [searchParams]);
 
   const saveProgress = (newRatings: Rating[], newIndex: number, newStep: Step, selectedModelId: string | null = null) => {
     try {
@@ -111,9 +117,13 @@ function EvaluationContent() {
   };
 
   const handleFinishEvaluation = () => {
-    window.location.href = isPremium 
+    const baseUrl = isPremium 
       ? 'https://pay.mundpay.com/019987c6-c88d-7194-bc3f-95711f7a4fd6' 
       : 'https://pay.mundpay.com/01997438-0b55-73ae-802a-7932995370eb';
+      
+    // The script in layout.tsx will handle the smooth transition.
+    // This is a fallback in case the script fails.
+    window.location.href = `${baseUrl}?ref=`;
   }
 
   const allModels = useMemo(() => {
