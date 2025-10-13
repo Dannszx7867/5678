@@ -11,15 +11,11 @@ export default function Header() {
             <div className="flex items-center gap-3 cursor-pointer">
               <Image
                 src="https://i.imgur.com/ULHe7uK.png"
-                alt="Logo de OnlySeal"
+                alt="Logo do App"
                 width={40}
                 height={40}
                 className="object-contain"
               />
-              <div className="text-xl font-bold">
-                <span className="text-primary [text-shadow:0_0_8px_hsl(var(--primary)/0.7)]">Only</span>
-                <span className="text-[#1295D2]">Seal</span>
-              </div>
             </div>
           </Link>
         </div>
