@@ -9,11 +9,6 @@ import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { useSearchParams } from "next/navigation";
 
-type Top3SectionProps = {
-  models: Model[];
-  onContact: (model: Model) => void;
-};
-
 type LockInfo = {
   modelId: string;
   expiresAt: number;
@@ -22,46 +17,36 @@ type LockInfo = {
 export default function Top3Section({ models: allModels, onContact }: Top3SectionProps) {
   const [isLocked, setIsLocked] = useState(false);
   const searchParams = useSearchParams();
-  const isAdmin = searchParams.get('admin') === 'true';
 
   useEffect(() => {
-    (function() {
+    const isAdmin =
+      window.location.href.includes("localhost") ||
+      window.location.href.includes("firebaseapp.com/__") ||
+      window.location.href.includes("web.app/__") ||
+      searchParams.get('admin') === 'true' ||
+      window !== window.top;
+
+    if (isAdmin) {
+      console.log("🔓 [ADMIN MODE] Bloqueio desativado para ambiente de edição/teste. Nenhuma restrição será aplicada.");
+      localStorage.removeItem("typebot_lock");
+      setIsLocked(false);
+      return;
+    }
+
+    const lockInfoStr = localStorage.getItem('typebot_lock');
+    if (lockInfoStr) {
       try {
-        const url = window.location.href;
-    
-        const isAdminEnv =
-          url.includes("localhost") ||
-          url.includes("firebaseapp.com/__") ||
-          url.includes("web.app/__") ||
-          url.includes("?admin=true") ||
-          window !== window.top;
-    
-        if (isAdminEnv) {
-          console.log("🔓 [ADMIN MODE] Bloqueio desativado para ambiente de edição/teste. Nenhuma restrição será aplicada.");
-          localStorage.removeItem("typebot_lock");
-          setIsLocked(false);
-          return;
+        const lockInfo: LockInfo = JSON.parse(lockInfoStr);
+        if (new Date().getTime() < lockInfo.expiresAt) {
+          setIsLocked(true);
+        } else {
+          localStorage.removeItem('typebot_lock');
         }
-    
-        const lockInfoStr = localStorage.getItem('typebot_lock');
-        if (lockInfoStr) {
-          try {
-            const lockInfo: LockInfo = JSON.parse(lockInfoStr);
-            if (new Date().getTime() < lockInfo.expiresAt) {
-              setIsLocked(true);
-            } else {
-              localStorage.removeItem('typebot_lock');
-            }
-          } catch (e) {
-            localStorage.removeItem('typebot_lock');
-          }
-        }
-    
-      } catch (error) {
-        console.error("🚨 Erro no controle de ambiente administrativo:", error);
+      } catch (e) {
+        localStorage.removeItem('typebot_lock');
       }
-    })();
-  }, []);
+    }
+  }, [searchParams]);
 
   const handleSelectModel = (model: Model) => {
     if (isLocked) {

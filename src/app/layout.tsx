@@ -31,13 +31,13 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://i.imgur.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://i.imgur.com" />
-        <link rel="preload" href="/video_01.mp4" as="video" type="video/mp4" />
-        <link rel="preload" href="/video_02.mp4" as="video" type="video/mp4" />
-        <link rel="preload" href="/video_03.mp4" as="video" type="video/mp4" />
-        <link rel="preload" href="/video_04.mp4" as="video" type="video/mp4" />
-        <link rel="preload" href="/video_05.mp4" as="video" type="video/mp4" />
-        <link rel="preload" href="/video_06.mp4" as="video" type="video/mp4" />
-        <link rel="preload" href="/video_07.mp4" as="video" type="video/mp4" />
+        <link rel="preload" href="/video_01.mp4" as="video" type="video/mp4" crossOrigin="anonymous" />
+        <link rel="preload" href="/video_02.mp4" as="video" type="video/mp4" crossOrigin="anonymous" />
+        <link rel="preload" href="/video_03.mp4" as="video" type="video/mp4" crossOrigin="anonymous" />
+        <link rel="preload" href="/video_04.mp4" as="video" type="video/mp4" crossOrigin="anonymous" />
+        <link rel="preload" href="/video_05.mp4" as="video" type="video/mp4" crossOrigin="anonymous" />
+        <link rel="preload" href="/video_06.mp4" as="video" type="video/mp4" crossOrigin="anonymous" />
+        <link rel="preload" href="/video_07.mp4" as="video" type="video/mp4" crossOrigin="anonymous" />
         <Script
           src="https://cdn.utmify.com.br/scripts/utms/latest.js"
           data-utmify-prevent-xcod-sck
