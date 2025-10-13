@@ -25,30 +25,47 @@ export default function Top3Section({ models: allModels, onContact }: Top3Sectio
   const isAdmin = searchParams.get('admin') === 'true';
 
   useEffect(() => {
-    if (isAdmin) {
-      localStorage.removeItem('typebot_lock');
-      setIsLocked(false);
-      return;
-    }
-
-    const lockInfoStr = localStorage.getItem('typebot_lock');
-    if (lockInfoStr) {
+    (function() {
       try {
-        const lockInfo: LockInfo = JSON.parse(lockInfoStr);
-        if (new Date().getTime() < lockInfo.expiresAt) {
-          setIsLocked(true);
-        } else {
-          localStorage.removeItem('typebot_lock');
+        const url = window.location.href;
+    
+        const isAdminEnv =
+          url.includes("localhost") ||
+          url.includes("firebaseapp.com/__") ||
+          url.includes("web.app/__") ||
+          url.includes("?admin=true") ||
+          window !== window.top;
+    
+        if (isAdminEnv) {
+          console.log("🔓 [ADMIN MODE] Bloqueio desativado para ambiente de edição/teste. Nenhuma restrição será aplicada.");
+          localStorage.removeItem("typebot_lock");
+          setIsLocked(false);
+          return;
         }
-      } catch (e) {
-        localStorage.removeItem('typebot_lock');
+    
+        const lockInfoStr = localStorage.getItem('typebot_lock');
+        if (lockInfoStr) {
+          try {
+            const lockInfo: LockInfo = JSON.parse(lockInfoStr);
+            if (new Date().getTime() < lockInfo.expiresAt) {
+              setIsLocked(true);
+            } else {
+              localStorage.removeItem('typebot_lock');
+            }
+          } catch (e) {
+            localStorage.removeItem('typebot_lock');
+          }
+        }
+    
+      } catch (error) {
+        console.error("🚨 Erro no controle de ambiente administrativo:", error);
       }
-    }
-  }, [isAdmin]);
+    })();
+  }, []);
 
   const handleSelectModel = (model: Model) => {
-    if (isLocked || isAdmin) {
-      onContact(model);
+    if (isLocked) {
+      handleUpdatePlan();
       return;
     }
     const expiresAt = new Date().getTime() + 24 * 60 * 60 * 1000; // 24 hours from now
@@ -59,7 +76,6 @@ export default function Top3Section({ models: allModels, onContact }: Top3Sectio
   };
   
   const handleUpdatePlan = () => {
-    // Redirect to premium plan checkout
     window.location.href = 'https://pay.mundpay.com/019987c6-c88d-7194-bc3f-95711f7a4fd6';
   }
 
@@ -76,7 +92,7 @@ export default function Top3Section({ models: allModels, onContact }: Top3Sectio
           <ArrowDown className="h-10 w-10 text-primary mx-auto mt-4 animate-bounce" />
         </div>
 
-        {isLocked && !isAdmin && (
+        {isLocked && (
           <Card className="max-w-2xl mx-auto mb-8 border-2 border-destructive/50 bg-destructive/5 text-center">
             <CardHeader>
               <CardTitle className="text-destructive text-lg">Has alcanzado tu límite de selección de modelos.</CardTitle>
@@ -92,7 +108,7 @@ export default function Top3Section({ models: allModels, onContact }: Top3Sectio
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
             {allModels.map((model, index) => (
-            <div key={model.id} className={cn("h-full transition-opacity", (isLocked && !isAdmin) ? 'cursor-not-allowed' : '')}>
+            <div key={model.id} className={cn("h-full transition-opacity", (isLocked) ? 'cursor-not-allowed' : '')}>
                 <Card className="overflow-hidden rounded-2xl shadow-lg animate-fade-in flex flex-col h-full">
                     <CardHeader className="p-0">
                     <div className="aspect-square relative">
@@ -101,12 +117,12 @@ export default function Top3Section({ models: allModels, onContact }: Top3Sectio
                           alt={`Modelo ${model.name}`}
                           width={400}
                           height={400}
-                          className={cn("object-cover w-full h-full", (isLocked && !isAdmin) && "brightness-50")}
+                          className={cn("object-cover w-full h-full", isLocked && "brightness-50")}
                           data-ai-hint={model.imageHint}
                           priority={index < 3}
                           loading={index < 3 ? 'eager' : 'lazy'}
                         />
-                         {(isLocked && !isAdmin) && (
+                         {isLocked && (
                           <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
                               <Lock className="w-12 h-12 text-white/70" />
                           </div>
@@ -143,7 +159,7 @@ export default function Top3Section({ models: allModels, onContact }: Top3Sectio
                           onClick={() => handleSelectModel(model)} 
                           size="lg" 
                           className="w-full rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm sm:text-base py-3 px-3 h-auto"
-                          disabled={isLocked && !isAdmin}
+                          disabled={isLocked}
                           >
                             <MessageCircle className="mr-2 h-4 w-4" />
                             Entrar en Contacto
