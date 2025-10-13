@@ -85,7 +85,7 @@ export default function Top3Section({ models: allModels, onContact }: Top3Sectio
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
             {allModels.map((model, index) => (
-            <div key={model.id} className={cn("h-full transition-opacity", lockedModel && lockedModel.id !== model.id ? 'opacity-50 cursor-not-allowed' : '')}>
+            <div key={model.id} className={cn("h-full transition-opacity", lockedModel && lockedModel.id !== model.id ? 'cursor-not-allowed' : '')}>
                 <Card className="overflow-hidden rounded-2xl shadow-lg animate-fade-in flex flex-col h-full">
                     <CardHeader className="p-0">
                     <div className="aspect-square relative">
@@ -100,7 +100,7 @@ export default function Top3Section({ models: allModels, onContact }: Top3Sectio
                           loading={index < 3 ? 'eager' : 'lazy'}
                         />
                          {lockedModel && lockedModel.id !== model.id && (
-                          <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
+                          <div className="absolute inset-0 bg-black/75 flex items-center justify-center">
                               <Lock className="w-12 h-12 text-white/70" />
                           </div>
                         )}
@@ -136,7 +136,7 @@ export default function Top3Section({ models: allModels, onContact }: Top3Sectio
                           onClick={() => handleSelectModel(model)} 
                           size="lg" 
                           className="w-full rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm sm:text-base py-3 px-3 h-auto"
-                          disabled={!!lockedModel && lockedModel.id !== model.id}
+                          disabled={!!lockedModel}
                           >
                             <MessageCircle className="mr-2 h-4 w-4" />
                             Entrar en Contacto
