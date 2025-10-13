@@ -19,7 +19,7 @@ type LockInfo = {
 };
 
 export default function Top3Section({ models: allModels, onContact }: Top3SectionProps) {
-  const [lockedModel, setLockedModel] = useState<Model | null>(null);
+  const [isLocked, setIsLocked] = useState(false);
 
   useEffect(() => {
     const lockInfoStr = localStorage.getItem('typebot_lock');
@@ -27,10 +27,7 @@ export default function Top3Section({ models: allModels, onContact }: Top3Sectio
       try {
         const lockInfo: LockInfo = JSON.parse(lockInfoStr);
         if (new Date().getTime() < lockInfo.expiresAt) {
-          const foundModel = allModels.find(m => m.id === lockInfo.modelId);
-          if (foundModel) {
-            setLockedModel(foundModel);
-          }
+          setIsLocked(true);
         } else {
           localStorage.removeItem('typebot_lock');
         }
@@ -38,16 +35,16 @@ export default function Top3Section({ models: allModels, onContact }: Top3Sectio
         localStorage.removeItem('typebot_lock');
       }
     }
-  }, [allModels]);
+  }, []);
 
   const handleSelectModel = (model: Model) => {
-    if (lockedModel) {
-      // Potentially show a toast or alert here
+    if (isLocked) {
       return;
     }
     const expiresAt = new Date().getTime() + 24 * 60 * 60 * 1000; // 24 hours from now
     const lockInfo: LockInfo = { modelId: model.id, expiresAt };
     localStorage.setItem('typebot_lock', JSON.stringify(lockInfo));
+    setIsLocked(true);
     onContact(model);
   };
   
@@ -69,7 +66,7 @@ export default function Top3Section({ models: allModels, onContact }: Top3Sectio
           <ArrowDown className="h-10 w-10 text-primary mx-auto mt-4 animate-bounce" />
         </div>
 
-        {lockedModel && (
+        {isLocked && (
           <Card className="max-w-2xl mx-auto mb-8 border-2 border-destructive/50 bg-destructive/5 text-center">
             <CardHeader>
               <CardTitle className="text-destructive text-lg">Has alcanzado tu límite de selección de modelos.</CardTitle>
@@ -85,7 +82,7 @@ export default function Top3Section({ models: allModels, onContact }: Top3Sectio
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
             {allModels.map((model, index) => (
-            <div key={model.id} className={cn("h-full transition-opacity", lockedModel && lockedModel.id !== model.id ? 'cursor-not-allowed' : '')}>
+            <div key={model.id} className={cn("h-full transition-opacity", isLocked ? 'cursor-not-allowed' : '')}>
                 <Card className="overflow-hidden rounded-2xl shadow-lg animate-fade-in flex flex-col h-full">
                     <CardHeader className="p-0">
                     <div className="aspect-square relative">
@@ -99,7 +96,7 @@ export default function Top3Section({ models: allModels, onContact }: Top3Sectio
                           priority={index < 3}
                           loading={index < 3 ? 'eager' : 'lazy'}
                         />
-                         {lockedModel && lockedModel.id !== model.id && (
+                         {isLocked && (
                           <div className="absolute inset-0 bg-black/75 flex items-center justify-center">
                               <Lock className="w-12 h-12 text-white/70" />
                           </div>
@@ -136,7 +133,7 @@ export default function Top3Section({ models: allModels, onContact }: Top3Sectio
                           onClick={() => handleSelectModel(model)} 
                           size="lg" 
                           className="w-full rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm sm:text-base py-3 px-3 h-auto"
-                          disabled={!!lockedModel}
+                          disabled={isLocked}
                           >
                             <MessageCircle className="mr-2 h-4 w-4" />
                             Entrar en Contacto
