@@ -4,14 +4,57 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import type { Model } from "@/app/data/models";
-import { ArrowDown, MessageCircle } from "lucide-react";
+import { ArrowDown, MessageCircle, Lock } from "lucide-react";
+import { useState, useEffect } from "react";
+import { cn } from "@/lib/utils";
 
 type Top3SectionProps = {
   models: Model[];
   onContact: (model: Model) => void;
 };
 
+type LockInfo = {
+  modelId: string;
+  expiresAt: number;
+};
+
 export default function Top3Section({ models: allModels, onContact }: Top3SectionProps) {
+  const [lockedModel, setLockedModel] = useState<Model | null>(null);
+
+  useEffect(() => {
+    const lockInfoStr = localStorage.getItem('typebot_lock');
+    if (lockInfoStr) {
+      try {
+        const lockInfo: LockInfo = JSON.parse(lockInfoStr);
+        if (new Date().getTime() < lockInfo.expiresAt) {
+          const foundModel = allModels.find(m => m.id === lockInfo.modelId);
+          if (foundModel) {
+            setLockedModel(foundModel);
+          }
+        } else {
+          localStorage.removeItem('typebot_lock');
+        }
+      } catch (e) {
+        localStorage.removeItem('typebot_lock');
+      }
+    }
+  }, [allModels]);
+
+  const handleSelectModel = (model: Model) => {
+    if (lockedModel) {
+      // Potentially show a toast or alert here
+      return;
+    }
+    const expiresAt = new Date().getTime() + 24 * 60 * 60 * 1000; // 24 hours from now
+    const lockInfo: LockInfo = { modelId: model.id, expiresAt };
+    localStorage.setItem('typebot_lock', JSON.stringify(lockInfo));
+    onContact(model);
+  };
+  
+  const handleUpdatePlan = () => {
+    // Redirect to premium plan checkout
+    window.location.href = 'https://pay.mundpay.com/019987c6-c88d-7194-bc3f-95711f7a4fd6';
+  }
 
   return (
     <section className="py-16 sm:py-24 bg-gray-50/50">
@@ -26,9 +69,23 @@ export default function Top3Section({ models: allModels, onContact }: Top3Sectio
           <ArrowDown className="h-10 w-10 text-primary mx-auto mt-4 animate-bounce" />
         </div>
 
+        {lockedModel && (
+          <Card className="max-w-2xl mx-auto mb-8 border-2 border-destructive/50 bg-destructive/5 text-center">
+            <CardHeader>
+              <CardTitle className="text-destructive text-lg">Has alcanzado tu límite de selección de modelos.</CardTitle>
+              <CardDescription className="text-destructive/90">
+                Para hablar con más modelos, actualiza tu plan.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Button onClick={handleUpdatePlan} className="bg-destructive hover:bg-destructive/90 text-destructive-foreground">Actualizar Plan</Button>
+            </CardContent>
+          </Card>
+        )}
+
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
             {allModels.map((model, index) => (
-            <div key={model.id} className="h-full">
+            <div key={model.id} className={cn("h-full transition-opacity", lockedModel && lockedModel.id !== model.id ? 'opacity-50 cursor-not-allowed' : '')}>
                 <Card className="overflow-hidden rounded-2xl shadow-lg animate-fade-in flex flex-col h-full">
                     <CardHeader className="p-0">
                     <div className="aspect-square relative">
@@ -42,6 +99,11 @@ export default function Top3Section({ models: allModels, onContact }: Top3Sectio
                           priority={index < 3}
                           loading={index < 3 ? 'eager' : 'lazy'}
                         />
+                         {lockedModel && lockedModel.id !== model.id && (
+                          <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
+                              <Lock className="w-12 h-12 text-white/70" />
+                          </div>
+                        )}
                         <div className="absolute top-2 left-2 bg-green-500/80 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1 border border-white/30">
                             <span className="relative flex h-2 w-2">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-300 opacity-75"></span>
@@ -70,7 +132,12 @@ export default function Top3Section({ models: allModels, onContact }: Top3Sectio
                     </div>
                     
                     <div className="pt-2">
-                        <Button onClick={() => onContact(model)} size="lg" className="w-full rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm sm:text-base py-3 px-3 h-auto">
+                        <Button 
+                          onClick={() => handleSelectModel(model)} 
+                          size="lg" 
+                          className="w-full rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm sm:text-base py-3 px-3 h-auto"
+                          disabled={!!lockedModel && lockedModel.id !== model.id}
+                          >
                             <MessageCircle className="mr-2 h-4 w-4" />
                             Entrar en Contacto
                         </Button>
