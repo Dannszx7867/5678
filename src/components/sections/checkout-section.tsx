@@ -36,7 +36,7 @@ export default function CheckoutSection({ onContinue, onPlanChange }: CheckoutSe
   };
 
   return (
-    <section className="py-16 sm:py-24 bg-background">
+    <section className="py-12 sm:py-16 bg-background">
       <div className="container mx-auto px-4 max-w-2xl">
         
         <Card className="mb-8 rounded-2xl bg-primary/5 border border-primary/20">
@@ -64,7 +64,7 @@ export default function CheckoutSection({ onContinue, onPlanChange }: CheckoutSe
             </div>
             <div className="mt-4 flex items-center justify-center space-x-3">
                 <Checkbox id="terms" onCheckedChange={(checked) => setTermsAccepted(!!checked)} checked={termsAccepted} className="w-5 h-5"/>
-                <Label htmlFor="terms" className="text-base text-foreground/90 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                <Label htmlFor="terms" className="text-sm text-foreground/90 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                 He leído y acepto los <a href="#" className="underline hover:text-primary">términos y políticas</a> de la plataforma.
                 </Label>
             </div>
@@ -83,7 +83,7 @@ export default function CheckoutSection({ onContinue, onPlanChange }: CheckoutSe
                     <p className="text-muted-foreground text-sm mt-1">Libera el contenido de todas las modelos de la plataforma, no solo las de tu Top 3, y compite por premios exclusivos semanales.</p>
                 </div>
                 <div className="flex items-center gap-4 p-2 cursor-pointer" onClick={() => handlePlanChange(!isPremium)}>
-                     <span className="font-headline text-3xl font-bold text-primary">$15,00</span>
+                     <span className="font-headline text-3xl font-bold text-primary">${ctaPrice.replace('10,90', '15,00')}</span>
                     <div className="flex items-center space-x-2">
                         <Switch id="premium-plan" checked={isPremium} onCheckedChange={handlePlanChange} aria-label="Cambiar a plan premium"/>
                         <Label htmlFor="premium-plan" className="font-bold flex items-center gap-1 cursor-pointer">

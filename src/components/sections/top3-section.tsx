@@ -31,7 +31,7 @@ export default function Top3Section({ models: allModels, onContact }: Top3Sectio
             <div key={model.id} className="h-full">
                 <Card className="overflow-hidden rounded-2xl shadow-lg animate-fade-in flex flex-col h-full">
                     <CardHeader className="p-0">
-                    <div className="aspect-square relative">
+                    <div className="aspect-w-1 aspect-h-1 relative">
                         <Image
                         src={model.imageUrl}
                         alt={`Modelo ${model.name}`}
@@ -70,7 +70,7 @@ export default function Top3Section({ models: allModels, onContact }: Top3Sectio
                     </div>
                     
                     <div className="pt-2">
-                        <Button onClick={() => onContact(model)} className="w-full rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-base py-3 px-3 h-auto">
+                        <Button onClick={() => onContact(model)} size="lg" className="w-full rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm sm:text-base py-3 px-3 h-auto">
                             <MessageCircle className="mr-2 h-4 w-4" />
                             Entrar en Contacto
                         </Button>

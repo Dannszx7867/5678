@@ -184,7 +184,7 @@ function EvaluationContent() {
 
 export default function EvaluationPage() {
   return (
-    <Suspense fallback={<div className="h-screen w-screen flex items-center justify-center">Cargando...</div>}>
+    <Suspense fallback={<div className="h-screen w-screen bg-background flex items-center justify-center">Cargando...</div>}>
       <EvaluationContent />
     </Suspense>
   )
