@@ -40,7 +40,7 @@ const WistiaAudioPlayer = ({ mediaId }: { mediaId: string }) => {
       <Script src={`https://fast.wistia.com/embed/${mediaId}.js`} async type="module" />
       <style>{`wistia-player[media-id='${mediaId}']:not(:defined) { display: block; filter: blur(5px); padding-top:100%; }`}</style>
       <div className="w-64 h-16 bg-transparent rounded-2xl flex items-center p-2 relative overflow-hidden">
-        <wistia-player media-id={mediaId} swatch="false" style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0 }}></wistia-player>
+        <wistia-player media-id={mediaId} swatch="false" style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0, willChange: 'transform' }}></wistia-player>
       </div>
     </>
   );

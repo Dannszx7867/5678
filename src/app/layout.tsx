@@ -34,6 +34,7 @@ export default function RootLayout({
         <link rel="preload" href="/video_04.mp4" as="video" type="video/mp4" />
         <link rel="preload" href="/video_05.mp4" as="video" type="video/mp4" />
         <link rel="preload" href="/video_06.mp4" as="video" type="video/mp4" />
+        <link rel="preload" href="/video_07.mp4" as="video" type="video/mp4" />
         <Script
           src="https://cdn.utmify.com.br/scripts/utms/latest.js"
           data-utmify-prevent-xcod-sck
