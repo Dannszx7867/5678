@@ -80,7 +80,7 @@ export default function Top3Section({ models: allModels, onContact }: Top3Sectio
                         <Button 
                           onClick={() => handleSelectModel(model)} 
                           size="lg" 
-                          className="w-full rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm sm:text-base py-3 px-3 h-auto"
+                          className="w-full rounded-full bg-primary hover:bg-primary/90 text-white font-bold text-sm sm:text-base py-3 px-3 h-auto"
                           >
                             <MessageCircle className="mr-2 h-4 w-4" />
                             Entrar en Contacto
