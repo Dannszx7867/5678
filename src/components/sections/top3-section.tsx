@@ -21,7 +21,7 @@ export default function Top3Section({ models: allModels, onContact }: Top3Sectio
   };
 
   return (
-    <section className="py-16 sm:py-24 bg-gray-50/50">
+    <section className="py-16 sm:py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -36,7 +36,7 @@ export default function Top3Section({ models: allModels, onContact }: Top3Sectio
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
             {allModels.map((model, index) => (
             <div key={model.id} className="h-full transition-opacity">
-                <Card className="overflow-hidden rounded-2xl shadow-lg animate-fade-in flex flex-col h-full">
+                <Card className="overflow-hidden rounded-2xl shadow-lg animate-fade-in flex flex-col h-full bg-card">
                     <CardHeader className="p-0">
                     <div className="aspect-square relative">
                         <Image

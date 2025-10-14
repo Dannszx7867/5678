@@ -23,8 +23,8 @@ export default function Header() {
           <Image
             src="https://i.imgur.com/ysm5XaM.png"
             alt="Inspirado en Privacy"
-            width={180}
-            height={90}
+            width={120}
+            height={60}
             className="object-contain"
           />
         </div>
