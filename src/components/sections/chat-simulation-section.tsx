@@ -233,7 +233,7 @@ export default function ChatSimulationSection({ model, onContinue }: ChatSimulat
                             </div>
                         )}
                         <div className={cn('max-w-[75%] rounded-2xl px-4 py-3', 
-                            msg.sender === 'user' ? 'bg-primary text-primary-foreground rounded-br-none' : 'bg-gray-100 text-gray-900 rounded-bl-none',
+                            msg.sender === 'user' ? 'bg-primary text-primary-foreground rounded-br-none' : 'bg-gray-100 text-primary rounded-bl-none',
                             (msg.type === 'options' || msg.type === 'button') && 'bg-transparent p-0',
                              msg.type === 'audio' && 'bg-transparent p-0',
                              msg.type === 'video' && 'bg-transparent p-0'
