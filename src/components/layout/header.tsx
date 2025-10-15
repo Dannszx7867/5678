@@ -15,6 +15,7 @@ export default function Header() {
                 width={40}
                 height={40}
                 className="object-contain"
+                priority
               />
             </div>
           </Link>
@@ -23,9 +24,10 @@ export default function Header() {
           <Image
             src="https://i.imgur.com/ysm5XaM.png"
             alt="Inspirado en Privacy"
-            width={120}
-            height={60}
+            width={100}
+            height={50}
             className="object-contain"
+            priority
           />
         </div>
         <div className="flex items-center justify-end gap-2 text-sm text-muted-foreground">

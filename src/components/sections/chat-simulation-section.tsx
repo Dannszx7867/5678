@@ -199,7 +199,7 @@ export default function ChatSimulationSection({ model, onContinue }: ChatSimulat
               <div className="flex items-center">
                 <div className="relative">
                   <div className="h-12 w-12 overflow-hidden rounded-full">
-                    <Image alt={model.name} loading="lazy" width="48" height="48" decoding="async" data-nimg="1" className="h-full w-full object-cover" src={model.imageUrl} />
+                    <Image alt={model.name} loading="lazy" width="48" height="48" decoding="async" className="h-full w-full object-cover" src={model.imageUrl} />
                   </div>
                   <div className="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-green-500 border border-white"></div>
                 </div>
@@ -233,16 +233,16 @@ export default function ChatSimulationSection({ model, onContinue }: ChatSimulat
                             </div>
                         )}
                         <div className={cn('max-w-[75%] rounded-2xl px-4 py-3', 
-                            msg.sender === 'user' ? 'bg-primary text-primary-foreground rounded-br-none' : 'bg-gray-100 text-primary rounded-bl-none',
+                            msg.sender === 'user' ? 'bg-primary text-primary-foreground rounded-br-none' : 'bg-gray-100 rounded-bl-none',
                             (msg.type === 'options' || msg.type === 'button') && 'bg-transparent p-0',
                              msg.type === 'audio' && 'bg-transparent p-0',
                              msg.type === 'video' && 'bg-transparent p-0'
                         )}>
-                            {msg.type === 'text' && <p className={cn("text-base", msg.sender === 'model' ? "text-primary" : "")}>{msg.content}</p>}
+                            {msg.type === 'text' && <p className={cn("text-base", msg.sender === 'model' ? "text-primary" : "text-gray-800")}>{msg.content}</p>}
                             {msg.type === 'audio' && <WistiaAudioPlayer mediaId={audioMap[msg.content]} />}
                             {msg.type === 'video' && (
                                 <div className="relative aspect-square w-48 h-48 rounded-lg overflow-hidden">
-                                    <video src={msg.content} autoPlay muted loop playsInline preload="auto" className="w-full h-full object-cover" style={{ willChange: 'transform' }} />
+                                    <video src={msg.content} autoPlay muted loop playsInline preload="auto" className="w-full h-full object-cover" style={{ willChange: 'transform, opacity' }} />
                                 </div>
                             )}
                             {msg.type === 'button' && msg.onButtonClick && (

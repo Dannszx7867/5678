@@ -58,7 +58,7 @@ export default function ExclusiveOfferSection({ model, onContinue }: ExclusiveOf
                     playsInline
                     preload="auto"
                     className="w-full h-full object-cover block"
-                    style={{ willChange: 'transform' }}
+                    style={{ willChange: 'transform, opacity' }}
                 />
                 ) : (
                     <Image
@@ -67,7 +67,7 @@ export default function ExclusiveOfferSection({ model, onContinue }: ExclusiveOf
                         fill
                         className="object-cover"
                         priority
-                        style={{ willChange: 'transform' }}
+                        style={{ willChange: 'transform, opacity' }}
                     />
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>

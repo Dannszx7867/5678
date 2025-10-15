@@ -47,7 +47,6 @@ export default function Top3Section({ models: allModels, onContact }: Top3Sectio
                           className="object-cover w-full h-full"
                           data-ai-hint={model.imageHint}
                           priority={index < 3}
-                          loading={index < 3 ? 'eager' : 'lazy'}
                         />
                         <div className="absolute top-2 left-2 bg-green-500/80 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1 border border-white/30">
                             <span className="relative flex h-2 w-2">

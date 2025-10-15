@@ -63,9 +63,6 @@ export default function HeroSection({ onStart }: HeroSectionProps) {
                         data-ai-hint={model.imageHint}
                         sizes="(max-width: 640px) 90vw, (max-width: 768px) 50vw, 33vw"
                         priority={index < 3}
-                        placeholder="blur"
-                        blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOM0wnyfwAFdAK2m0spnAAAAABJRU5ErkJggg=="
-                        loading={index < 3 ? 'eager' : 'lazy'}
                       />
                       <div className="absolute inset-0 bg-black/50"></div>
                       <div className="absolute bottom-0 left-0 right-0 h-2/5 bg-gradient-to-t from-black/80 to-transparent p-4 flex flex-col justify-end text-center">

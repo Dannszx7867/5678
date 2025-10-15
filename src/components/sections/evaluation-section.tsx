@@ -49,8 +49,6 @@ export default function EvaluationSection({ model, onRate, onFinish, current, to
                       data-ai-hint={model.imageHint}
                       sizes="(max-width: 640px) 90vw, 384px"
                       priority={isFirst}
-                      placeholder="blur"
-                      blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOM0wnyfwAFdAK2m0spnAAAAABJRU5ErkJggg=="
                     />
                     <div
                       className="video-overlay"
