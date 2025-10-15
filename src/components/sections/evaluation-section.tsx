@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { ThumbsDown, Heart, ArrowDown, Eye, MessageCircle } from "lucide-react";
 import type { Model } from "@/app/data/models";
 import { Progress } from "@/components/ui/progress";
@@ -41,61 +41,45 @@ export default function EvaluationSection({ model, onRate, onFinish, current, to
                   className="relative bg-black w-full"
                 >
                   <div className="relative w-full aspect-square md:aspect-[4/5] mx-auto">
-                    {model.videoUrl ? (
-                      <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden', borderRadius: '12px' }}>
-                        <video 
-                          key={model.videoUrl}
-                          src={model.videoUrl} 
-                          autoPlay 
-                          muted 
-                          loop 
-                          playsInline
-                          preload="auto"
-                          className="w-full h-full object-cover block"
-                          style={{ willChange: 'transform' }}
-                        />
-                        <div
-                          className="video-overlay"
-                          style={{
-                            position: 'absolute',
-                            bottom: '12px',
-                            left: '12px',
-                            color: '#fff',
-                            fontSize: '14px',
-                            fontWeight: '500',
-                            textShadow: '0 2px 8px rgba(0,0,0,0.8)',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            gap: '4px',
-                          }}
-                        >
-                          <span style={{ fontWeight: '600', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                            {model.name}
-                            {model.flagUrl && (
-                              <Image src={model.flagUrl} alt={`Bandera ${model.nationality}`} width={20} height={20} className="rounded-full" loading="lazy" />
-                            )}
-                          </span>
-                          <span style={{ opacity: 0.9 }}>@{model.persona}</span>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '4px' }}>
-                            <span><Eye size={16} className="inline-block mr-1" /> {model.photos}</span>
-                            <span><MessageCircle size={16} className="inline-block mr-1" /> {model.videos}</span>
-                            <span><Heart size={16} className="inline-block mr-1" /> {model.followers}</span>
-                          </div>
-                        </div>
+                    <Image
+                      src={model.evaluationImageUrl ?? model.imageUrl}
+                      alt={`Modelo ${model.name}`}
+                      fill
+                      className="object-cover"
+                      data-ai-hint={model.imageHint}
+                      sizes="(max-width: 640px) 90vw, 384px"
+                      priority={isFirst}
+                      placeholder="blur"
+                      blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOM0wnyfwAFdAK2m0spnAAAAABJRU5ErkJggg=="
+                    />
+                    <div
+                      className="video-overlay"
+                      style={{
+                        position: 'absolute',
+                        bottom: '12px',
+                        left: '12px',
+                        color: '#fff',
+                        fontSize: '14px',
+                        fontWeight: '500',
+                        textShadow: '0 2px 8px rgba(0,0,0,0.8)',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '4px',
+                      }}
+                    >
+                      <span style={{ fontWeight: '600', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        {model.name}
+                        {model.flagUrl && (
+                          <Image src={model.flagUrl} alt={`Bandera ${model.nationality}`} width={20} height={20} className="rounded-full" loading="lazy" />
+                        )}
+                      </span>
+                      <span style={{ opacity: 0.9 }}>@{model.persona}</span>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '4px' }}>
+                        <span><Eye size={16} className="inline-block mr-1" /> {model.photos}</span>
+                        <span><MessageCircle size={16} className="inline-block mr-1" /> {model.videos}</span>
+                        <span><Heart size={16} className="inline-block mr-1" /> {model.followers}</span>
                       </div>
-                    ) : (
-                      <Image
-                        src={model.evaluationImageUrl ?? model.imageUrl}
-                        alt={`Modelo ${model.name}`}
-                        fill
-                        className="object-cover"
-                        data-ai-hint={model.imageHint}
-                        sizes="(max-width: 640px) 90vw, 384px"
-                        priority={isFirst}
-                        placeholder="blur"
-                        blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOM0wnyfwAFdAK2m0spnAAAAABJRU5ErkJggg=="
-                      />
-                    )}
+                    </div>
                   </div>
                 </div>
               </CardHeader>

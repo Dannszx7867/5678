@@ -45,11 +45,6 @@ function EvaluationContent() {
       console.log("🔓 [ADMIN MODE] Bloqueio desativado para ambiente de edição/teste. Nenhuma restrição será aplicada.");
       localStorage.removeItem('typebot_lock');
     }
-
-    // Always start fresh, remove any saved progress to prevent skipping steps, unless admin.
-    if (typeof window !== 'undefined' && !isAdmin) {
-      localStorage.removeItem('avaliador-progress-v1');
-    }
   }, [searchParams]);
 
   const saveProgress = (newRatings: Rating[], newIndex: number, newStep: Step, selectedModelId: string | null = null) => {
