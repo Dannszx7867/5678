@@ -38,9 +38,6 @@ export default function HeroSection({ onStart }: HeroSectionProps) {
       
       <div className="mt-8 flex flex-col items-center justify-center gap-4">
         <ArrowDown className="h-10 w-10 animate-bounce text-primary" />
-      </div>
-
-      <div className="mt-8 mb-10 flex items-center justify-center gap-x-6">
         <Link href="/evaluation" passHref>
           <Button
             id="hero-start-button"
@@ -51,6 +48,9 @@ export default function HeroSection({ onStart }: HeroSectionProps) {
             Comenzar Evaluación
           </Button>
         </Link>
+        <p className="mx-auto mt-2 max-w-2xl text-lg leading-8 text-muted-foreground">
+          Mira a continuación los modelos que vas a evaluar y elegir para ponerte en contacto.
+        </p>
       </div>
 
       <div className="mt-10">
