@@ -146,7 +146,7 @@ export default function ChatSimulationSection({ model, onContinue }: ChatSimulat
             setIsTyping(false);
             runChatFlow(10);
           }, 1500)
-        }, 26000); // 26 seconds
+        }, 8000); // 8 seconds
         break;
 
       case 10: // Finish chat
@@ -238,7 +238,7 @@ export default function ChatSimulationSection({ model, onContinue }: ChatSimulat
                              msg.type === 'audio' && 'bg-transparent p-0',
                              msg.type === 'video' && 'bg-transparent p-0'
                         )}>
-                            {msg.type === 'text' && <p className="text-base">{msg.content}</p>}
+                            {msg.type === 'text' && <p className={cn("text-base", msg.sender === 'model' ? "text-primary" : "")}>{msg.content}</p>}
                             {msg.type === 'audio' && <WistiaAudioPlayer mediaId={audioMap[msg.content]} />}
                             {msg.type === 'video' && (
                                 <div className="relative aspect-square w-48 h-48 rounded-lg overflow-hidden">
