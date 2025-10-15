@@ -108,17 +108,13 @@ export default function HeroSection({ onStart }: HeroSectionProps) {
         </Carousel>
       </div>
       
-      <div className="mt-8 flex flex-col items-center justify-center gap-4">
-        <ArrowDown className="h-10 w-10 animate-bounce text-primary" />
-      </div>
-
-      <div className="mt-8 flex items-center justify-center gap-x-6">
+      <div className="mt-12 flex items-center justify-center gap-x-6">
         <Link href="/evaluation" passHref>
           <Button
             id="hero-start-button"
             onClick={onStart}
             size="lg"
-            className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90 text-lg font-semibold px-10 py-6 transition-transform hover:scale-105 active:scale-95 shadow-lg"
+            className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90 text-xl font-bold px-12 py-7 transition-transform hover:scale-105 active:scale-95 shadow-lg shadow-primary/30"
           >
             Comenzar Evaluación
           </Button>
