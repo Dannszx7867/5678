@@ -93,8 +93,7 @@ export default function ExclusiveOfferSection({ model, onContinue }: ExclusiveOf
             </div>
              <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-6">
                 <div>
-                    <span className="text-5xl sm:text-6xl font-bold text-primary [text-shadow:0_0_12px_hsl(var(--primary)/0.8)]">$10,90</span>
-                    <span className="ml-2 text-xl text-muted-foreground line-through">$27,90</span>
+                    <span className="text-5xl sm:text-6xl font-bold text-primary [text-shadow:0_0_12px_hsl(var(--primary)/0.8)]">$19,00</span>
                 </div>
                 <p className="text-sm text-muted-foreground text-center sm:text-right">
                     Precio en Dólar (USD).<br/>La plataforma convierte a tu moneda local.

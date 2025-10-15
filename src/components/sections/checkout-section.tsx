@@ -28,7 +28,7 @@ export default function CheckoutSection({ onContinue, onPlanChange }: CheckoutSe
   }, [selectedPlan, onPlanChange]);
 
 
-  const ctaPrice = selectedPlan === 'premium' ? '15,00' : '10,90';
+  const ctaPrice = selectedPlan === 'premium' ? '25,00' : '19,00';
   const isPremium = selectedPlan === 'premium';
   
   const handleCheckout = () => {
@@ -83,7 +83,7 @@ export default function CheckoutSection({ onContinue, onPlanChange }: CheckoutSe
                     <p className="text-muted-foreground text-sm mt-1">Libera el contenido de todas las modelos de la plataforma y compite por premios exclusivos semanales.</p>
                 </div>
                 <div className="flex items-center gap-4 p-2 cursor-pointer" onClick={() => handlePlanChange(!isPremium)}>
-                     <span className="font-headline text-3xl font-bold text-primary">${ctaPrice.replace('10,90', '15,00')}</span>
+                     <span className="font-headline text-3xl font-bold text-primary">${ctaPrice.replace('19,00', '25,00')}</span>
                     <div className="flex items-center space-x-2">
                         <Switch id="premium-plan" checked={isPremium} onCheckedChange={handlePlanChange} aria-label="Cambiar a plan premium"/>
                         <Label htmlFor="premium-plan" className="font-bold flex items-center gap-1 cursor-pointer">
