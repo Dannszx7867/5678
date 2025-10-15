@@ -54,7 +54,7 @@ export default function HeroSection({ onStart }: HeroSectionProps) {
               <CarouselItem key={model.id} className="basis-full sm:basis-1/2 md:basis-1/3">
                 <div className="p-2">
                   <Card className="overflow-hidden rounded-2xl">
-                    <CardContent className="relative flex aspect-[4/5] items-center justify-center p-0">
+                    <CardContent className="relative flex aspect-square items-center justify-center p-0">
                       <Image
                         src={model.imageUrl}
                         alt={`Modelo ${model.name}`}
