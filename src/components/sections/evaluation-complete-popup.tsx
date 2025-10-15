@@ -27,7 +27,7 @@ export default function EvaluationCompletePopup({ isOpen, onAction }: Evaluation
                 size="lg"
                 className="w-full rounded-full bg-primary text-lg font-bold text-primary-foreground hover:bg-primary/90 px-10 py-7 shadow-lg shadow-primary/30 active:scale-95"
             >
-                Ver las 3 mejores
+                Hablar con los modelos
             </Button>
         </div>
       </DialogContent>
