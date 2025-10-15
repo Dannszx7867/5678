@@ -68,8 +68,8 @@ export default function ChatSimulationSection({ model, onContinue }: ChatSimulat
     setTimeout(() => {
       setIsRecording(false);
       addMessage({ sender: 'model', type: 'audio', content: audioKey });
-      setTimeout(nextStepFn, 1000);
-    }, 5000);
+      setTimeout(nextStepFn, 500);
+    }, 2000);
   };
   
   const handleUserMessage = () => {
@@ -92,7 +92,7 @@ export default function ChatSimulationSection({ model, onContinue }: ChatSimulat
             addMessage({ sender: 'model', type: 'text', content: 'Hola, ¿cómo estás, amorcito?🥰' });
             setIsTyping(false);
             setAwaitingUserResponse(true);
-        }, 1500);
+        }, 1000);
         break;
       
       case 2: // Audio 1
@@ -108,15 +108,15 @@ export default function ChatSimulationSection({ model, onContinue }: ChatSimulat
             addMessage({ sender: 'model', type: 'text', content: 'Déjame ver, ¿mi amor?😍' });
             setIsTyping(false);
             setAwaitingUserResponse(true);
-        }, 4500);
+        }, 2000);
         break;
         
       case 5: // Blurred Image -> Video
         setTimeout(() => {
             addMessage({ sender: 'model', type: 'video', content: '/video_07.mp4' });
             setIsTyping(false);
-            setTimeout(() => runChatFlow(6), 1500);
-        }, 2000);
+            setTimeout(() => runChatFlow(6), 1000);
+        }, 1500);
         break;
         
       case 6: // Te gustó?
@@ -145,15 +145,15 @@ export default function ChatSimulationSection({ model, onContinue }: ChatSimulat
             addMessage({ sender: 'model', type: 'text', content: 'Haz clic aquí para tenerme a mí y a mis amigas, amor😍👇' });
             setIsTyping(false);
             runChatFlow(10);
-          }, 1500)
-        }, 8000); // 8 seconds
+          }, 1000)
+        }, 2000); 
         break;
 
       case 10: // Finish chat
         setTimeout(() => {
             setIsTyping(false);
             setIsChatFinished(true);
-        }, 2200);
+        }, 1500);
         break;
     }
   };
@@ -179,7 +179,7 @@ export default function ChatSimulationSection({ model, onContinue }: ChatSimulat
     };
 
     if (nextStepMap[currentStep]) {
-        setTimeout(() => runChatFlow(nextStepMap[currentStep]), 1000);
+        setTimeout(() => runChatFlow(nextStepMap[currentStep]), 500);
     }
     
   // eslint-disable-next-line react-hooks/exhaustive-deps
