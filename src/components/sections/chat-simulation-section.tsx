@@ -68,7 +68,7 @@ export default function ChatSimulationSection({ model, onContinue }: ChatSimulat
     setTimeout(() => {
       setIsRecording(false);
       addMessage({ sender: 'model', type: 'audio', content: audioKey });
-      setTimeout(nextStepFn, 500);
+      setTimeout(nextStepFn, 1000);
     }, 2000);
   };
   
@@ -92,7 +92,7 @@ export default function ChatSimulationSection({ model, onContinue }: ChatSimulat
             addMessage({ sender: 'model', type: 'text', content: 'Hola, ¿cómo estás, amorcito?🥰' });
             setIsTyping(false);
             setAwaitingUserResponse(true);
-        }, 1000);
+        }, 1500);
         break;
       
       case 2: // Audio 1
@@ -115,7 +115,7 @@ export default function ChatSimulationSection({ model, onContinue }: ChatSimulat
         setTimeout(() => {
             addMessage({ sender: 'model', type: 'video', content: '/video_07.mp4' });
             setIsTyping(false);
-            setTimeout(() => runChatFlow(6), 1000);
+            setTimeout(() => runChatFlow(6), 1500);
         }, 1500);
         break;
         
@@ -124,7 +124,7 @@ export default function ChatSimulationSection({ model, onContinue }: ChatSimulat
             addMessage({ sender: 'model', type: 'text', content: '¿Te gustó mi amor?🤭' });
             setIsTyping(false);
             setAwaitingUserResponse(true);
-        }, 1000);
+        }, 1500);
         break;
         
       case 7: // Audio 3
@@ -145,8 +145,8 @@ export default function ChatSimulationSection({ model, onContinue }: ChatSimulat
             addMessage({ sender: 'model', type: 'text', content: 'Haz clic aquí para tenerme a mí y a mis amigas, amor😍👇' });
             setIsTyping(false);
             runChatFlow(10);
-          }, 1000)
-        }, 2000); 
+          }, 1500)
+        }, 8000); 
         break;
 
       case 10: // Finish chat
@@ -179,7 +179,7 @@ export default function ChatSimulationSection({ model, onContinue }: ChatSimulat
     };
 
     if (nextStepMap[currentStep]) {
-        setTimeout(() => runChatFlow(nextStepMap[currentStep]), 500);
+        setTimeout(() => runChatFlow(nextStepMap[currentStep]), 1000);
     }
     
   // eslint-disable-next-line react-hooks/exhaustive-deps
