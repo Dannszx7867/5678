@@ -32,9 +32,6 @@ export default function HeroSection({ onStart }: HeroSectionProps) {
       <h1 className="mt-4 font-headline text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
         Evalúa modelos <span className="text-primary [text-shadow:0_0_8px_hsl(var(--primary)/0.7)]">internacionales</span> y <span className="text-primary [text-shadow:0_0_8px_hsl(var(--primary)/0.7)]">brasileñas</span>, elige tus favoritas para una conversación privada
       </h1>
-      <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
-        Desliza hacia abajo y haz clic en “Comenzar Evaluación” para evaluar.
-      </p>
       
       <div className="mt-8 flex flex-col items-center justify-center gap-4">
         <ArrowDown className="h-10 w-10 animate-bounce text-primary" />
