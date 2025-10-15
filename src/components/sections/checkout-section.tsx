@@ -79,8 +79,8 @@ export default function CheckoutSection({ onContinue, onPlanChange }: CheckoutSe
             </CardHeader>
             <CardContent className="flex flex-col sm:flex-row items-center justify-between gap-4 p-6 pt-0">
                 <div className="flex-1">
-                    <h4 className="font-bold text-lg text-foreground">Acceso TOTAL a TODAS las 9 Modelos + 5 Modelos secretas + Sorteos VIP</h4>
-                    <p className="text-muted-foreground text-sm mt-1">Libera el contenido de todas las modelos de la plataforma, no solo las de tu Top 3, y compite por premios exclusivos semanales.</p>
+                    <h4 className="font-bold text-lg text-foreground">Acceso TOTAL a TODAS las 6 Modelos + 5 Modelos secretas + Sorteos VIP</h4>
+                    <p className="text-muted-foreground text-sm mt-1">Libera el contenido de todas las modelos de la plataforma y compite por premios exclusivos semanales.</p>
                 </div>
                 <div className="flex items-center gap-4 p-2 cursor-pointer" onClick={() => handlePlanChange(!isPremium)}>
                      <span className="font-headline text-3xl font-bold text-primary">${ctaPrice.replace('10,90', '15,00')}</span>
