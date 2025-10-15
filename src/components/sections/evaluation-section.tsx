@@ -40,7 +40,7 @@ export default function EvaluationSection({ model, onRate, onFinish, current, to
                 <div 
                   className="relative bg-black w-full"
                 >
-                  <div className="relative w-full aspect-square md:aspect-[4/5] mx-auto">
+                  <div className="relative w-full aspect-[4/5] mx-auto">
                     <Image
                       src={model.evaluationImageUrl ?? model.imageUrl}
                       alt={`Modelo ${model.name}`}
